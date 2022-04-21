@@ -56,7 +56,7 @@ Creating and saving data
 json.create > json_obj
 json_obj.put 
   "age"
-  "20"
+  20
 json_obj.put
   "state"
   "good"
@@ -65,3 +65,10 @@ json_obj.put
 json_obj.save "jfile.json"
 ```
 
+After the previous block of code we have this:
+jfile.json
+```
+{
+  "age": 20
+  "state": "good"
+}
