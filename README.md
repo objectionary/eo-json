@@ -46,9 +46,9 @@ parser.put
 stdout > @
   sprintf
     "In the %s %s I took a book called %s"
-    (parser.get "description").get "color"
-    parser.get "essence"
-    ((parser.get "books").get 0).get "title"
+    ((parser.get "description").get "color").as-string
+    (parser.get "essence").as-string
+    (((parser.get "books").get 0).get "title").as-string 
 ```
 
 Creating and saving data 
