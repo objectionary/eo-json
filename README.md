@@ -53,7 +53,7 @@ stdout > @
 
 Creating and saving data 
 ```
-json.create > json_obj
+json.create_object > json_obj
 json_obj.put 
   "age"
   20
@@ -71,3 +71,10 @@ jfile.json after the previous block of code
   "age": 20
   "state": "good"
 }
+
+Array manipulation (This part is not finished yet)
+```
+json.create_object > json_obj
+json.create_array > json_obj
+...
+```
