@@ -73,7 +73,7 @@ jfile.json after the previous block of code
 }
 ```
 
-Array manipulation (This part is not finished yet)
+Array manipulation
 ```
 json.create_object > json_obj
 json.create_array > json_arr
