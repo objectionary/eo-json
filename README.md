@@ -65,8 +65,7 @@ json_obj.put
 json_obj.save "jfile.json"
 ```
 
-After the previous block of code we have this:
-jfile.json
+jfile.json after the previous block of code
 ```
 {
   "age": 20
