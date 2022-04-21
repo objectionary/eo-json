@@ -76,6 +76,15 @@ jfile.json after the previous block of code
 Array manipulation (This part is not finished yet)
 ```
 json.create_object > json_obj
-json.create_array > json_obj
-...
+json.create_array > json_arr
+
+json_arr.add
+  "type"
+  "person"
+json_arr.add
+  "age"
+  20
+json_obj.put
+  "essence"
+  json_arr
 ```
