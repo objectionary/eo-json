@@ -76,7 +76,7 @@ x.put
   "good"
 ```
 
-'x' after the previous block of code
+**x** after the previous block of code
 ```
 {
   "age": 20,
