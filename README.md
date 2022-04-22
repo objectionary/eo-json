@@ -16,7 +16,7 @@ json.wrap map > x
 
 stdout > @
   sprintf
-    "Data: %s"
+    "Data: \n%s"
     x.as-string
 ```
 
