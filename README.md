@@ -45,12 +45,12 @@ Simple manipulations
 ```
 json.parse data > x
 
-# **put** operation create new field (key, value) in json object
+# 'put' operation create new field (key, value) in json object
 x.put
   "essence"
   "bookcase"
 
-# every **get** operation returns json object
+# every 'get' operation returns json object
 # this piece of code writes json-array to a variable 'books'
 x.get "books" > books
 
