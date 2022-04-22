@@ -1,5 +1,7 @@
 [EOLANG](https://www.eolang.org) objects for JSON parsing.
 
+The main idea is that everything is a json (there is not a json-array)
+
 This is how create json object
 ```
 +alias org.eolang.io.stdout
