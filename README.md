@@ -52,6 +52,7 @@ stdout > @
     ((x.leaf "description").leaf "color").as-string
     (x.leaf "essence").as-string
     (((x.leaf "books").leaf 0).leaf "title").as-string 
+    
 # we don't have a data type like json-array, so to access a specific element, you need to refer to the leaf index
 ```
 
