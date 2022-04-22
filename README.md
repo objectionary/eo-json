@@ -6,15 +6,21 @@ This is how to include and print the whole json
 +alias org.eolang.io.stdout
 +alias org.eolang.txt.sprintf
 +alias org.eolang.fs.json
++alias org.eolang.collections.map
 
-"test_file.json".parse > parser
+# The first way is to parse the text
+json.parse "there should be a json string" > x
+
+# The second way is to wrap the map
+json.wrap map > x
+
 stdout > @
   sprintf
-    "Data:\n%s"
-    parser.as-string
+    "Data: %s"
+    x.as-string
 ```
 
-test_file.json
+JSON string for the following examples (the name of the string is 'data')
 ```
 {
   "id": 1,
@@ -37,55 +43,43 @@ test_file.json
 
 Simple manipulations
 ```
-"test_file.json".parse > parser
+json.parse data > x
 
-parser.put
+# put operation create new field (key, value) in json object
+x.put
   "essence"
   "bookcase"
+
+# every get operation returns json object
+# this piece of code writes json-array to a variable 'books'
+x.get "books" > books
 
 stdout > @
   sprintf
     "In the %s %s I took a book called %s"
-    ((parser.get "description").get "color").as-string
-    (parser.get "essence").as-string
-    (((parser.get "books").get 0).get "title").as-string 
+    ((x.get "description").get "color").as-string
+    (x.get "essence").as-string
+    (((x.get "books").get 0).x "title").as-string 
+
 ```
 
-Creating and saving data 
+The creation and use of a new json object
 ```
-json.create_object > json_obj
-json_obj.put 
+# creating of empty json object
+json.parse "{}" > x
+
+x.put 
   "age"
   20
-json_obj.put
+x.put
   "state"
   "good"
-  
-# save json to file "jfile.json"
-json_obj.save "jfile.json"
 ```
 
-jfile.json after the previous block of code
+'x' after the previous block of code
 ```
 {
-  "age": 20
+  "age": 20,
   "state": "good"
 }
-```
-
-Array manipulation
-```
-json.create_object > json_obj
-json.create_array > json_arr
-
-json_arr.add
-  "type"
-  "person"
-json_arr.add
-  "age"
-  20
-  
-json_obj.put
-  "essence"
-  json_arr
 ```
