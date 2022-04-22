@@ -46,7 +46,7 @@ json.parse data > x
 x.leaf "books" > books
 
 # 'write' operation puts the object in the field where we are now
-(x.leaf "essence").put "bookcase"
+(x.leaf "essence").write "bookcase"
 
 stdout > @
   sprintf
