@@ -1,0 +1,17 @@
++package org.eolang.jsn
++rt jvm org.eolang:eo-json:0.0.0
+
+[data] > json
+  data > @
+
+  # Check json is empty.
+  [] > is-empty /bool
+
+  # Get json size in bytes.
+  [] > size /int
+
+  # Get json from string
+  [d] > parse /json
+
+  # Go to leaf 'name'
+  [name] > leaf /json

@@ -1,0 +1,7 @@
++package org.eolang.jsn
++junit
+
+[] > not-map-test
+  eq. > @
+    TRUE
+    TRUE
