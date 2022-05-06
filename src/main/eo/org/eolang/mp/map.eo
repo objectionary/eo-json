@@ -1,7 +1,9 @@
 +package org.eolang.mp
 +rt jvm org.eolang:eo-json:0.0.0
 
-[] > map
+[m] > map
+  m > @
 
   # Return the value with the this key
   [key] > get /?
+

@@ -1,9 +1,9 @@
 +package org.eolang.mp
-+alias org.eolang.mp.map
++alias org.eolang.mp.create-map
 +junit
 
 [] > get-not-crashing
-  map > x!
+  create-map > x!
   eq. > @
     x.get "keyword"
     "empty"
