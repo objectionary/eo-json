@@ -1,5 +1,6 @@
 package EOorg.EOeolang.EOjsn;
 
+import EOorg.EOeolang.EOjsn.EOjson;
 import org.eolang.*;
 
 @SuppressWarnings("PMD.AvoidDollarSigns")

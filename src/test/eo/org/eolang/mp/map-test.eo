@@ -1,4 +1,4 @@
-+package org.eolang.jsn
++package org.eolang.mp
 +junit
 
 [] > not-map-test
