@@ -2,12 +2,13 @@
 +rt jvm org.eolang:eo-json:0.0.0
 
 [k] > item
-  # todo maybe need add 'k > @'
+  k > @
+
   memory > value
 
-  # Set value
   [v] > set
     ^.value.write v > @
 
-  [] > get-value
-    value > @
+  value > get-value
+
+  k > get-key

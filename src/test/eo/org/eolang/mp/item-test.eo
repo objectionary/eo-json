@@ -2,10 +2,16 @@
 +alias org.eolang.mp.item
 +junit
 
-[] > item-setter
+[] > item-getter-and-setter
   item "123" > x!
   seq > @
     x.set 2
     eq.
       x.get-value
       2
+
+[] > item-key-get
+  item "123" > x!
+  eq. > @
+    x.get-key
+    "123"
