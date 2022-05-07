@@ -1,0 +1,13 @@
++package org.eolang.mp
++rt jvm org.eolang:eo-json:0.0.0
+
+[k] > item
+  # todo maybe need add 'k > @'
+  memory > value
+
+  # Set value
+  [v] > set
+    ^.value.write v > @
+
+  [] > get-value
+    value > @

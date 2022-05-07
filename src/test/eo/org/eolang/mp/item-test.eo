@@ -1,0 +1,11 @@
++package org.eolang.mp
++alias org.eolang.mp.item
++junit
+
+[] > item-setter
+  item "123" > x!
+  seq > @
+    x.set 2
+    eq.
+      x.get-value
+      2
