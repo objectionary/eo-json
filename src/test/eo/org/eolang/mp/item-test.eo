@@ -15,3 +15,11 @@
   eq. > @
     x.get-key
     "123"
+
+[] > item-works-in-arrays
+  item 1 > x!
+  item 2 > y!
+  * x y > arr!
+  eq. > @
+    (arr.get 1).get-key
+    2

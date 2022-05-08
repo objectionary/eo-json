@@ -4,5 +4,22 @@
 [m] > map
   m > @
 
-  # Return the value with the this key
-  [key] > get /?
+  [t] > put /map
+
+  [key] > get
+    memory > res
+    memory > j
+    seq > @
+      res.write "word"
+      j.write 0
+      while.
+        j.less (m.length)
+        [i]
+          seq > @
+            res.write
+              if.
+                (m.get j).eq key
+                (m.get j).get-value
+                res
+            j.write (j.add 1)
+      res

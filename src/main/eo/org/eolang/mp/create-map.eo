@@ -1,4 +1,7 @@
 +package org.eolang.mp
++alias org.eolang.mp.map
 +rt jvm org.eolang:eo-json:0.0.0
 
-[] > create-map /map
+[] > create-map
+  map * > x!
+  x > @

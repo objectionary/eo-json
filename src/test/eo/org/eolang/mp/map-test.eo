@@ -1,9 +1,25 @@
 +package org.eolang.mp
++alias org.eolang.mp.item
 +alias org.eolang.mp.create-map
 +junit
 
 [] > get-not-crashing
   create-map > x!
-  eq. > @
-    x.get "keyword"
-    "empty"
+  seq > @
+    eq.
+      x.get "keyword"
+      "word"
+
+[] > put-not-crashing
+  create-map > x!
+  x.put (item 1) > y!
+  seq > @
+    TRUE
+
+[] > put-works-correct
+  create-map > x!
+  item 1 > t!
+  x.put t > y!
+  seq > @
+    t.set "flow"
+    TRUE
