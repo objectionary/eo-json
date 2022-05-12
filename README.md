@@ -2,6 +2,26 @@
 
 The main idea is that everything is a json
 
+Before using json, let's create a map object
+```
++alias org.eolang.collections.map
+
+# It's how created a map
+map > mp
+```
+
+How to get and put object to map
+```
+map > mp
+
+# This is how to add object with key "abc"
+mp.add "abc"
+
+# Here we go to the branch "abc" and write the value 1 there
+# Here we go to the branch "abc" and write the value 1 there
+(mp.leaf "abc").write 1
+```
+
 This is how create json object
 ```
 +alias org.eolang.io.stdout
@@ -13,7 +33,7 @@ This is how create json object
 json.parse "there should be a json string" > x
 
 # The second way is to wrap the map
-json.wrap map > x
+json mp > x
 ```
 
 JSON string for the following examples (the name of the string is **data**)
