@@ -7,10 +7,17 @@
   [t] > put /map
 
   [key] > get
+    pos key > p!
+    if. > @
+      p.eq -1
+      FALSE
+      (m.get p).get-value
+
+  [key] > pos
     memory > res
     memory > j
     seq > @
-      res.write "word"
+      res.write -1
       j.write 0
       while.
         j.less (m.length)
@@ -19,7 +26,7 @@
             res.write
               if.
                 (m.get j).eq key
-                (m.get j).get-value
+                j
                 res
             j.write (j.add 1)
       res

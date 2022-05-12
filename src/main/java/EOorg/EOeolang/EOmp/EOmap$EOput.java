@@ -13,11 +13,11 @@ public class EOmap$EOput extends PhDefault {
         super(sigma);
         this.add("t", new AtFree());
         this.add("φ", new AtComposite(this, rho -> {
-            final EOitem[] data = new Param(rho).strong(EOitem[].class);
-            final EOitem item = new Dataized(rho.attr("t").get()).take(EOitem.class);
-            final EOitem[] dest = new EOitem[data.length + 1];
+            final Phi[] data = new Param(rho).strong(Phi[].class);
+//            final Phi item = new Dataized(rho.attr("t").get()).take(Phi.class);
+            final Phi[] dest = new Phi[data.length + 1];
             System.arraycopy(data, 0, dest, 0, data.length);
-            dest[data.length] = item;
+            dest[data.length] =  rho.attr("t").get();
             return new PhWith(
                     new EOmap(rho), 0,
                     new Data.ToPhi(dest)

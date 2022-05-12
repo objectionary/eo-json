@@ -8,7 +8,7 @@
   seq > @
     eq.
       x.get "keyword"
-      "word"
+      FALSE
 
 [] > put-not-crashing
   create-map > x!
@@ -19,7 +19,14 @@
 [] > put-works-correct
   create-map > x!
   item 1 > t!
-  x.put t > y!
+  seq > @
+    TRUE
+
+[] > temp-test
+  create-map > mp
+  memory > mp2
+  item 1 > t
   seq > @
     t.set "flow"
+    mp2.write (mp.put t)
     TRUE
