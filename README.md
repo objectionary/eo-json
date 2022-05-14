@@ -14,21 +14,22 @@ How to get and put object to map
 ```
 map * > mp
 
-# When you put the object using method 'with' you get new map with this new object
+# When you put the object using method 'with' you get new map with this new object.
+# Each element you put is an array of two elements: (* key value)
 # This is how to put objects
 with. > mp 2
   with.
     with.
       mp
-      pair 34 9
-    pair 55 "hello"
-  pair "name" "eugene"
+      (* 34 9)
+    (* 55 "hello")
+  (* "name" "eugene")
   
-# 'get' returns an array empty (if the item wasn't found)
+# 'find' returns an array empty (if the item wasn't found)
 # or with one element (if the item was found)
   
 # How to get object from map by key
-mp2.get "name" > res
+mp2.find "name" > res
 if. > name
   res.is-empty
   "unnamed"
