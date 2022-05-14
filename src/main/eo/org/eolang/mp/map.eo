@@ -3,3 +3,9 @@
 
 [m] > map
   m > @
+
+  [key value] > get
+    if. > @
+      m.res.is-empty
+      TRUE
+      FALSE

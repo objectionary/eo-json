@@ -7,22 +7,35 @@ Before using json, let's create a map object
 +alias org.eolang.collections.map
 
 # It's how created a map
-map > mp
+map * > mp
 ```
 
 How to get and put object to map
 ```
-map > mp
+map * > mp
 
-# This is how to add object with key "abc"
-mp.add "abc"
-
-# Here we go to the branch "abc" and write the value 1 there
-# Here we go to the branch "abc" and write the value 1 there
-(mp.leaf "abc").write 1
+# When you put the object using method 'with' you get new map with this new object
+# This is how to put objects
+with. > mp 2
+  with.
+    with.
+      mp
+      pair 34 9
+    pair 55 "hello"
+  pair "name" "eugene"
+  
+# 'get' returns an array empty (if the item wasn't found)
+# or with one element (if the item was found)
+  
+# How to get object from map by key
+mp2.get "name" > res
+if. > name
+  res.is-empty
+  "unnamed"
+  res.get 0
 ```
 
-This is how create json object
+This is how to create json object
 ```
 +alias org.eolang.io.stdout
 +alias org.eolang.txt.sprintf
@@ -32,7 +45,7 @@ This is how create json object
 # The first way is to parse the text
 json.parse "there should be a json string" > x
 
-# The second way is to wrap the map
+# The second way is to wrap the map (here 'mp' has the type map)
 json mp > x
 ```
 
