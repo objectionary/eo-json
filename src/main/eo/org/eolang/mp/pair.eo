@@ -1,5 +1,9 @@
 +package org.eolang.mp
 +rt jvm org.eolang:eo-json:0.0.0
 
-[m] > map
-  m > @
+[k v] > pair
+  k > @
+
+  v > get-value
+
+  k > get-key

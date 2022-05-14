@@ -1,7 +1,0 @@
-+package org.eolang.mp
-+junit
-
-[] > empty-test
-  eq. > @
-    TRUE
-    TRUE

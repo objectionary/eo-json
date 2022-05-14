@@ -1,32 +1,48 @@
 +package org.eolang.mp
-+alias org.eolang.mp.item
-+alias org.eolang.mp.create-map
++alias org.eolang.mp.map
++alias org.eolang.mp.pair
 +junit
 
-[] > get-not-crashing
-  create-map > x!
-  seq > @
+[] > create-map
+  map * > mp
+  TRUE > @
+
+[] > array-of-arrays
+  * (* 1 2) (* 3 4 5) > x
+  and. > @
     eq.
-      x.get "keyword"
-      FALSE
+      (x.get 0).get 1
+      2
+    eq.
+      (x.get 1).get 2
+      5
 
-[] > put-not-crashing
-  create-map > x!
-  x.put (item 1) > y!
-  seq > @
-    TRUE
+[] > array-of-different-types
+  * 1 "abc" > x
+  and. > @
+    eq.
+      x.get 0
+      1
+    eq.
+      x.get 1
+      "abc"
 
-[] > put-works-correct
-  create-map > x!
-  item 1 > t!
-  seq > @
-    TRUE
+[] > pair-getter
+  pair 'a' 1 > x
+  and. > @
+    eq.
+      x.get-key
+      'a'
+    eq.
+      x.get-value
+      1
 
-[] > temp-test
-  create-map > mp
-  memory > mp2
-  item 1 > t
-  seq > @
-    t.set "flow"
-    mp2.write (mp.put t)
-    TRUE
+[] > array-of-arrays-of-pairs
+  * (* (pair 0 1) (pair 'c' 2)) (* (pair 2 "abc") (pair 'b' 'b') (pair 'a' TRUE)) > x
+  and. > @
+    eq.
+      ((x.get 1).get 0).get-value
+      "abc"
+    eq.
+      ((x.get 0).get 1).get-key
+      'c'
