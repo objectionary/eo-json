@@ -1,6 +1,5 @@
 +package org.eolang.mp
 +alias org.eolang.mp.map
-+alias org.eolang.mp.pair
 +junit
 
 [] > create-map
@@ -27,22 +26,21 @@
       x.get 1
       "abc"
 
-[] > pair-getter
-  pair 'a' 1 > x
-  and. > @
-    eq.
-      x.get-key
-      'a'
-    eq.
-      x.get-value
-      1
+[] > items-correct-amount
+  map (* (* 1 2) (* 3 4 5) (* 6 7 8 9 10)) > x
+  eq. > @
+    x.amount-elements
+    10
 
-[] > array-of-arrays-of-pairs
-  * (* (pair 0 1) (pair 'c' 2)) (* (pair 2 "abc") (pair 'b' 'b') (pair 'a' TRUE)) > x
-  and. > @
-    eq.
-      ((x.get 1).get 0).get-value
-      "abc"
-    eq.
-      ((x.get 0).get 1).get-key
-      'c'
+[] > items-correct-amount-2
+  map * > x
+  eq. > @
+    x.amount-elements
+    0
+
+[] > normalize-change-length
+  map * > x
+  x.normalize > y
+  eq. > @
+    y.length
+    8

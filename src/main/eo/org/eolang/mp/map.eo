@@ -4,8 +4,32 @@
 [m] > map
   m > @
 
-  [key value] > get
+  # Returns hash-table length
+  [] > length
+    m.length > @
+
+  # Count amount of elements in the hash-table
+  [] > amount-elements
+    memory > j
+    memory > amount
+    seq > @
+      amount.write 0
+      j.write 0
+      while.
+        j.less (m.length)
+        [i]
+          seq > @
+            amount.write (amount.add ((m.get j).length))
+            j.write (j.add 1)
+      amount
+
+  # Normalize the length of hash-table
+  [] > normalize
     if. > @
-      m.res.is-empty
-      TRUE
-      FALSE
+      less.
+        mul.
+          ^.amount-elements
+          4
+        m.length
+      ^
+      map (((((((((m).append *).append *).append *).append *).append *).append *).append *).append *)
