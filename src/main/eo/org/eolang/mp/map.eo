@@ -33,3 +33,30 @@
         m.length
       ^
       map (((((((((m).append *).append *).append *).append *).append *).append *).append *).append *)
+
+  # Returns position of key, if doesn't exist returns -1
+  [lst key] > position-in-list
+    memory > j
+    memory > pos
+    seq > @
+      j.write 0
+      pos.write -1
+      while.
+        j.less (lst.length)
+        [i]
+          seq > @
+            write.
+              pos
+              if.
+                key.eq ((lst.get j).get 0)
+                j
+                pos
+            j.write (j.add 1)
+      pos
+
+  # Returns new map with added object
+  [pair] > with
+    ^.normalize > x
+    (pair.get 0).as-hash > hash
+    hash.mod (x.length) > pos
+    pos > @

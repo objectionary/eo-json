@@ -1,5 +1,7 @@
 +package org.eolang.mp
 +alias org.eolang.mp.map
++alias org.eolang.txt.sprintf
++alias org.eolang.io.stdout
 +junit
 
 [] > create-map
@@ -32,6 +34,12 @@
     x.amount-elements
     10
 
+[] > length-correct
+  map (* (*) (*) (*) (*)) > x
+  eq. > @
+    x.length
+    4
+
 [] > items-correct-amount-2
   map * > x
   eq. > @
@@ -44,3 +52,24 @@
   eq. > @
     y.length
     8
+
+[] > position-in-list-correct
+  map * > mp
+  * (* 1 2) (* 3 4) (* 5 6) > lst
+  eq. > @
+    mp.position-in-list lst 3
+    1
+
+[] > position-in-list-correct-2
+  map * > mp
+  * (* 1 2) (* 3 4) (* 5 6) > lst
+  eq. > @
+    mp.position-in-list lst 4
+    -1
+
+[] > temp-test
+  TRUE.as-hash > x
+  seq > @
+    stdout
+      sprintf "%d\n" x
+    TRUE
