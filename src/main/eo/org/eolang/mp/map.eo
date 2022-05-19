@@ -1,4 +1,7 @@
 +package org.eolang.mp
++alias org.eolang.txt.sprintf
++alias org.eolang.io.stdout
++alias org.eolang.mp.concat
 +rt jvm org.eolang:eo-json:0.0.0
 
 [m] > map
@@ -23,16 +26,16 @@
             j.write (j.add 1)
       amount
 
-  # Normalize the length of hash-table
-  [] > normalize
-    if. > @
-      less.
-        mul.
-          ^.amount-elements
-          4
-        m.length
-      ^
-      map (((((((((m).append *).append *).append *).append *).append *).append *).append *).append *)
+  # Concatenate all lists
+  [arr index] > unite-all
+    (index.add 1) > index2
+    seq > @
+      stdout
+        sprintf "%d\n" index
+      if.
+        index.less (arr.length)
+        concat (arr.get index) (unite-all arr index2)
+        *
 
   # Returns position of key, if doesn't exist returns -1
   [lst key] > position-in-list
@@ -54,9 +57,11 @@
             j.write (j.add 1)
       pos
 
+  # (pair.get 0).as-hash > hash
+  # (m.length).add 1 > sz
+  # hash.mod sz > pos
   # Returns new map with added object
   [pair] > with
-    ^.normalize > x
-    (pair.get 0).as-hash > hash
-    hash.mod (x.length) > pos
-    pos > @
+    seq > @
+      ^.unite-all m 0
+      TRUE

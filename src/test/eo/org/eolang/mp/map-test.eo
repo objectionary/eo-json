@@ -1,7 +1,6 @@
 +package org.eolang.mp
 +alias org.eolang.mp.map
-+alias org.eolang.txt.sprintf
-+alias org.eolang.io.stdout
++alias org.eolang.mp.concat
 +junit
 
 [] > create-map
@@ -46,13 +45,6 @@
     x.amount-elements
     0
 
-[] > normalize-change-length
-  map * > x
-  x.normalize > y
-  eq. > @
-    y.length
-    8
-
 [] > position-in-list-correct
   map * > mp
   * (* 1 2) (* 3 4) (* 5 6) > lst
@@ -67,9 +59,25 @@
     mp.position-in-list lst 4
     -1
 
-[] > temp-test
-  TRUE.as-hash > x
-  seq > @
-    stdout
-      sprintf "%d\n" x
+[] > concatenate-correct
+  map * > mp
+  * 1 2 3 > x
+  * 4 5 6 7 > y
+  concat x y > z
+  and. > @
+    eq.
+      z.get 0
+      1
+    eq.
+      z.get 4
+      5
+    eq.
+      z.length
+      7
+
+[] > concatenate-all-lists-in-map
+  map (* (* 1 2) (* 3 4 5) (* 6 7)) > mp
+  mp.with (* 0 0) > con
+  eq. > @
+    con
     TRUE
