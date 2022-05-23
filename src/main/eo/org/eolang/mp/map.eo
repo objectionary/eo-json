@@ -28,7 +28,7 @@
 
   # Concatenate all lists
   [arr index] > unite-all
-    (index.add 1) > index2
+    (index.add 1) > index2!
     seq > @
       stdout
         sprintf "unite-all. %d\n" index
@@ -39,8 +39,8 @@
 
   # Create array by hash
   [arr hash index] > create-array-by-hash
-    arr.length > sz
-    (index.add 1) > index2
+    arr.length > sz!
+    (index.add 1) > index2!
     if. > @
       index.less sz
       if.
@@ -54,8 +54,8 @@
   # Create hash-table from list of elements
   # Error if sz == 0
   [arr hash] > create-hash-table
-    arr.length > sz
-    (hash.add 1) > hash2
+    arr.length > sz!
+    (hash.add 1) > hash2!
     * (create-array-by-hash arr hash 0) > curr
     seq > @
       stdout
@@ -89,7 +89,11 @@
 
   # Returns new map with added object
   [pair] > with
-    (^.unite-all m 0) > all-list
-    (all-list.append pair) > res-list
-    (create-hash-table res-list 0) > res
+    (^.unite-all m 0) > all-list!
+    (all-list.append pair) > res-list!
+    (create-hash-table res-list 0) > res!
     map res > @
+
+  # Debug code. Remove later
+  [index] > length-by-index
+    (m.get index).length > @

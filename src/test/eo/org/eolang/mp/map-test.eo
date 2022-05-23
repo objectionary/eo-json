@@ -1,8 +1,8 @@
 +package org.eolang.mp
 +alias org.eolang.mp.map
++alias org.eolang.mp.concat
 +alias org.eolang.txt.sprintf
 +alias org.eolang.io.stdout
-+alias org.eolang.mp.concat
 +junit
 
 [] > create-map
@@ -78,8 +78,13 @@
       7
 
 [] > with-correct
-  map * > mp
-  ((mp.with (* 0 'a')).with (* 1 'b')).with (* 'a' "abacaba") > mp2
-  eq. > @
-    mp2.length
-    3
+  map * > mp!
+  (mp.with (* 0 'a')).with (* 'a' "abacaba") > mp2!
+  seq > @
+    stdout
+      sprintf
+        "with-correct. %d\n"
+        mp2.length
+    eq.
+      mp2.length
+      2
