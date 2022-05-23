@@ -31,11 +31,41 @@
     (index.add 1) > index2
     seq > @
       stdout
-        sprintf "%d\n" index
+        sprintf "unite-all. %d\n" index
       if.
         index.less (arr.length)
         concat (arr.get index) (unite-all arr index2)
         *
+
+  # Create array by hash
+  [arr hash index] > create-array-by-hash
+    arr.length > sz
+    (index.add 1) > index2
+    if. > @
+      index.less sz
+      if.
+        eq.
+          (((arr.get index).get 0).as-hash).mod sz
+          hash
+        (create-array-by-hash arr hash index2).append (arr.get index)
+        (create-array-by-hash arr hash index2)
+      *
+
+  # Create hash-table from list of elements
+  # Error if sz == 0
+  [arr hash] > create-hash-table
+    arr.length > sz
+    (hash.add 1) > hash2
+    * (create-array-by-hash arr hash 0) > curr
+    seq > @
+      stdout
+        sprintf
+          "create-hash-table. %d\n"
+          hash
+      if.
+        hash2.less sz
+        concat curr (create-hash-table arr hash2)
+        curr
 
   # Returns position of key, if doesn't exist returns -1
   [lst key] > position-in-list
@@ -57,11 +87,9 @@
             j.write (j.add 1)
       pos
 
-  # (pair.get 0).as-hash > hash
-  # (m.length).add 1 > sz
-  # hash.mod sz > pos
   # Returns new map with added object
   [pair] > with
-    seq > @
-      ^.unite-all m 0
-      TRUE
+    (^.unite-all m 0) > all-list
+    (all-list.append pair) > res-list
+    (create-hash-table res-list 0) > res
+    map res > @
