@@ -1,7 +1,7 @@
 +package org.eolang.mp
++alias org.eolang.mp.concat
 +alias org.eolang.txt.sprintf
 +alias org.eolang.io.stdout
-+alias org.eolang.mp.concat
 +rt jvm org.eolang:eo-json:0.0.0
 
 [m] > map
@@ -9,7 +9,7 @@
 
   # Returns hash-table length
   [] > length
-    m.length > @
+    (^.m).length > @
 
   # Count amount of elements in the hash-table
   [] > amount-elements
@@ -30,8 +30,6 @@
   [arr index] > unite-all
     (index.add 1) > index2!
     seq > @
-      stdout
-        sprintf "unite-all. %d\n" index
       if.
         index.less (arr.length)
         concat (arr.get index) (unite-all arr index2)
@@ -44,10 +42,17 @@
     if. > @
       index.less sz
       if.
-        eq.
-          (((arr.get index).get 0).as-hash).mod sz
-          hash
-        (create-array-by-hash arr hash index2).append (arr.get index)
+        seq
+          stdout
+            sprintf
+              "debug: %d %d %d\n"
+              (((arr.get index).get 0).as-hash)
+              sz
+              ((((arr.get index).get 0).as-hash).mod sz)
+          eq.
+            ((((arr.get index).get 0).as-hash).mod sz)
+            hash
+        concat (* (arr.get index)) (create-array-by-hash arr hash index2)
         (create-array-by-hash arr hash index2)
       *
 
@@ -56,7 +61,7 @@
   [arr hash] > create-hash-table
     arr.length > sz!
     (hash.add 1) > hash2!
-    * (create-array-by-hash arr hash 0) > curr
+    (create-array-by-hash arr hash 0) > curr!
     seq > @
       stdout
         sprintf
@@ -92,8 +97,14 @@
     (^.unite-all m 0) > all-list!
     (all-list.append pair) > res-list!
     (create-hash-table res-list 0) > res!
-    map res > @
+    seq > @
+      stdout
+        sprintf
+          "with. %d %d\n"
+          res.length
+          (res.get 0).length
+      (map res)
 
   # Debug code. Remove later
-  [index] > length-by-index
-    (m.get index).length > @
+  [index] > get-by-index
+    (m.get index) > @
