@@ -1,112 +1,36 @@
 +package org.eolang.mp
-+alias org.eolang.mp.map
-+alias org.eolang.mp.concat
 +alias org.eolang.txt.sprintf
 +alias org.eolang.io.stdout
++alias org.eolang.mp.map
 +junit
 
-[] > create-map
-  map * > mp
+[] > true-return
   TRUE > @
 
-[] > array-of-arrays
-  * (* 1 2) (* 3 4 5) > x
-  and. > @
-    eq.
-      (x.get 0).get 1
-      2
-    eq.
-      (x.get 1).get 2
-      5
-
-[] > array-of-different-types
-  * 1 "abc" > x
-  and. > @
-    eq.
-      x.get 0
-      1
-    eq.
-      x.get 1
-      "abc"
-
-[] > items-correct-amount
-  map (* (* 1 2) (* 3 4 5) (* 6 7 8 9 10)) > x
-  eq. > @
-    x.amount-elements
-    10
-
-[] > length-correct
-  map (* (*) (*) (*) (*)) > x
-  eq. > @
-    x.length
-    4
-
-[] > items-correct-amount-2
-  map * > x
-  eq. > @
-    x.amount-elements
-    0
-
-[] > position-in-list-correct
+[] > pairs-to-hash-test
   map * > mp
-  * (* 1 2) (* 3 4) (* 5 6) > lst
-  eq. > @
-    mp.position-in-list lst 3
-    1
-
-[] > position-in-list-correct-2
-  map * > mp
-  * (* 1 2) (* 3 4) (* 5 6) > lst
-  eq. > @
-    mp.position-in-list lst 4
-    -1
-
-[] > concatenate-correct
-  * 1 2 3 > x
-  * 4 5 6 7 > y
-  concat x y > z
-  and. > @
+  * (* "key" 2) (* 2 3) (* 3 4) > arr
+  mp.pairs-to-hash arr > tarr
+  seq > @
+    stdout
+      sprintf
+        "tarr size = %d\nvalues: %d %d %d\n"
+        tarr.length
+        tarr.at 0
+        tarr.at 1
+        tarr.at 2
     eq.
-      z.get 0
-      1
-    eq.
-      z.get 4
-      5
-    eq.
-      z.length
-      7
-
-[] > concatenate-correct-2
-  * (* (* 0 'a') (* 1 'b')) > x!
-  * (* (* 3 'c') (* 4 'd')) (* (* 5 'e') (* 6 'f')) > y!
-  concat x y > z!
-  and. > @
-    eq.
-      z.length
+      tarr.at 2
       3
+
+[] > concat-all-arrays-test
+  map * > mp
+  * (* 1 2 3) (* 4 5 6 7) (* 8) (*) (* 9) (*) > arr
+  mp.concat-all-arrays arr > res
+  and. > @
     eq.
-      ((z.get 1).get 1).get 0
+      res.length
+      9
+    eq.
+      res.at 3
       4
-
-[] > with-correct
-  map * > mp!
-  (mp.with (* 1 'a')) > mp2!
-  seq > @
-    stdout
-      sprintf
-        "with-correct. %d\n"
-        mp2.length
-    TRUE
-
-[] > create-array-by-hash-correct
-  map * > mp!
-  * (* 3 'a') (* 1 'b') > arr!
-  (mp.create-array-by-hash arr 0 0) > res!
-  (mp.create-array-by-hash arr 1 0) > res2!
-  seq > @
-    stdout
-      sprintf
-        "create-array-by-hash-correct. %d %d\n"
-        res.length
-        (1).mod 2
-    TRUE

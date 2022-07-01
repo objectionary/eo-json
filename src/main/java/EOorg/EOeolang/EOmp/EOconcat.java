@@ -1,5 +1,4 @@
 package EOorg.EOeolang.EOmp;
-
 import org.eolang.*;
 
 import java.util.Arrays;

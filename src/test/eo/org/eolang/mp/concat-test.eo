@@ -1,0 +1,20 @@
++package org.eolang.mp
++alias org.eolang.mp.concat
++alias org.eolang.hamcrest.assert-that
++junit
+
+[] > concat-test-1
+  * 1 2 3 > arr1
+  * 4 5 6 7 > arr2
+  concat arr1 arr2 > res
+  assert-that > @
+    res.length
+    $.equal-to 7
+
+[] > concat-test-2
+  * (* "key" "value") (* "not-key" 42) > arr1
+  * (* 3 4) > arr2
+  concat arr1 arr2 > res
+  assert-that > @
+    (res.at 1).at 1
+    $.equal-to 42

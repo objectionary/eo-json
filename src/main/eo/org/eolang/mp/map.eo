@@ -1,110 +1,22 @@
 +package org.eolang.mp
 +alias org.eolang.mp.concat
-+alias org.eolang.txt.sprintf
-+alias org.eolang.io.stdout
-+rt jvm org.eolang:eo-json:0.0.0
 
 [m] > map
+
   m > @
 
-  # Returns hash-table length
-  [] > length
-    (^.m).length > @
-
-  # Count amount of elements in the hash-table
-  [] > amount-elements
-    memory > j
-    memory > amount
-    seq > @
-      amount.write 0
-      j.write 0
-      while.
-        j.less (m.length)
-        [i]
-          seq > @
-            amount.write (amount.add ((m.get j).length))
-            j.write (j.add 1)
-      amount
-
-  # Concatenate all lists
-  [arr index] > unite-all
-    (index.add 1) > index2!
-    seq > @
-      if.
-        index.less (arr.length)
-        concat (arr.get index) (unite-all arr index2)
-        *
-
-  # Create array by hash
-  [arr hash index] > create-array-by-hash
-    arr.length > sz!
-    (index.add 1) > index2!
-    if. > @
-      index.less sz
-      if.
-        seq
-          stdout
-            sprintf
-              "debug: %d %d %d\n"
-              (((arr.get index).get 0).as-hash)
-              sz
-              ((((arr.get index).get 0).as-hash).mod sz)
-          eq.
-            ((((arr.get index).get 0).as-hash).mod sz)
-            hash
-        concat (* (arr.get index)) (create-array-by-hash arr hash index2)
-        (create-array-by-hash arr hash index2)
+  [arr] > concat-all-arrays
+    reduce. > @
+      arr
       *
+      [a x]
+        concat a x > @
 
-  # Create hash-table from list of elements
-  # Error if sz == 0
-  [arr hash] > create-hash-table
-    arr.length > sz!
-    (hash.add 1) > hash2!
-    (create-array-by-hash arr hash 0) > curr!
-    seq > @
-      stdout
-        sprintf
-          "create-hash-table. %d\n"
-          hash
-      if.
-        hash2.less sz
-        concat curr (create-hash-table arr hash2)
-        curr
-
-  # Returns position of key, if doesn't exist returns -1
-  [lst key] > position-in-list
-    memory > j
-    memory > pos
-    seq > @
-      j.write 0
-      pos.write -1
-      while.
-        j.less (lst.length)
-        [i]
-          seq > @
-            write.
-              pos
-              if.
-                key.eq ((lst.get j).get 0)
-                j
-                pos
-            j.write (j.add 1)
-      pos
-
-  # Returns new map with added object
-  [pair] > with
-    (^.unite-all m 0) > all-list!
-    (all-list.append pair) > res-list!
-    (create-hash-table res-list 0) > res!
-    seq > @
-      stdout
-        sprintf
-          "with. %d %d\n"
-          res.length
-          (res.get 0).length
-      (map res)
-
-  # Debug code. Remove later
-  [index] > get-by-index
-    (m.get index) > @
+  [arr] > pairs-to-hash
+    reduce. > @
+      arr
+      *
+      [a x]
+        with. > @
+          a
+          (x.at 0).as-hash
