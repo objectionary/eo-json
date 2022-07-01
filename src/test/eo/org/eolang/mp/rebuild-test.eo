@@ -1,0 +1,12 @@
++package org.eolang.mp
++alias org.eolang.mp.rebuild
++junit
+
+[] > rebuild-test
+  * 1 2 > harr
+  * "1" "2" > arr
+  rebuild harr arr > res
+  seq > @
+    eq.
+      res.length
+      4

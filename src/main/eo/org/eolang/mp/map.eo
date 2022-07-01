@@ -20,3 +20,10 @@
         with. > @
           a
           (x.at 0).as-hash
+
+  [key value] > with
+    * key value > new-pair
+    ^.concat-all-arrays m > caa
+    caa.with new-pair > arr
+    ^.pairs-to-hash arr > harr
+    TRUE > @
