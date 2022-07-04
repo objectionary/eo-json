@@ -12,8 +12,6 @@ public class EOrebuild extends PhDefault {
         this.add("harr", new AtFree());
         this.add("arr", new AtFree());
         this.add("φ", new AtComposite(this, rho -> {
-            System.out.println("Started");
-
             final Phi[] harr = new Dataized(rho.attr("harr").get()).take(Phi[].class);
             final Phi[] arr = new Dataized(rho.attr("arr").get()).take(Phi[].class);
 
@@ -48,8 +46,6 @@ public class EOrebuild extends PhDefault {
                 }
                 result[i] = new Data.ToPhi(array);
             }
-
-            System.out.println("Passed");
 
             return new Data.ToPhi(result);
         }));

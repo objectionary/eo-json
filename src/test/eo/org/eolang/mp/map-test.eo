@@ -4,9 +4,6 @@
 +alias org.eolang.mp.map
 +junit
 
-[] > true-return
-  TRUE > @
-
 [] > pairs-to-hash-test
   map * > mp
   * (* "key" 2) (* 2 3) (* 3 4) > arr
@@ -44,3 +41,10 @@
         "%d\n"
         mp2.length
     TRUE
+
+[] > find-do-not-crashed
+  map * > mp
+  mp.find 1 > res
+  eq. > @
+    res.length
+    0
