@@ -93,8 +93,28 @@
 # TODO
 [] > find-and-with
   map * > fmp!
-  ((fmp.with 1 "a").with "abc" "cba").with 4 5 > mp!
-  TRUE > @
+  ((((fmp.with 1 "a").with "abc" "cba").with 4 5).with 3 5) > mp!
+  mp.find 1 > r1!
+  mp.find 2 > r2!
+  mp.find 3 > r3!
+  mp.find 4 > r4!
+  mp.find "abc" > rabc!
+  and. > @
+    eq.
+      r1.at 0
+      "a"
+    eq.
+      r2.length
+      0
+    eq.
+      r3.at 0
+      5
+    eq.
+      r4.at 0
+      5
+    eq.
+      rabc.at 0
+      "cba"
 
 # TODO
 [] > map-of-maps
