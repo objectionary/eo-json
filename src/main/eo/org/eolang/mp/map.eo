@@ -1,9 +1,14 @@
 +package org.eolang.mp
 +alias org.eolang.mp.concat
++alias org.eolang.mp.rebuild
 
 [m] > map
 
   m > @
+
+  # Returns hash-table length
+  [] > length
+    m.length > @
 
   [arr] > concat-all-arrays
     reduce. > @
@@ -17,13 +22,15 @@
       arr
       *
       [a x]
-        with. > @
-          a
-          (x.at 0).as-hash
+        (a.with ((x.at 0).as-hash)) > @
 
+  # ... > arr
+  # ^.pairs-to-hash arr > harr
+  # (map (rebuild harr arr)) > @
   [key value] > with
     * key value > new-pair
     ^.concat-all-arrays m > caa
     caa.with new-pair > arr
     ^.pairs-to-hash arr > harr
-    TRUE > @
+    rebuild harr arr > table
+    map table > @

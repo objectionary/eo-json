@@ -12,6 +12,8 @@ public class EOrebuild extends PhDefault {
         this.add("harr", new AtFree());
         this.add("arr", new AtFree());
         this.add("φ", new AtComposite(this, rho -> {
+            System.out.println("Started");
+
             final Phi[] harr = new Dataized(rho.attr("harr").get()).take(Phi[].class);
             final Phi[] arr = new Dataized(rho.attr("arr").get()).take(Phi[].class);
 
@@ -21,6 +23,8 @@ public class EOrebuild extends PhDefault {
                 final Long x = new Dataized(item).take(Long.class);
                 hashes.add(Math.toIntExact(x));
             }
+
+            System.out.println("Elements count: " + hashes.size());
 
             // This value can be changed for memory or speed optimization
             int TABLE_SIZE = hashes.size();
@@ -44,6 +48,8 @@ public class EOrebuild extends PhDefault {
                 }
                 result[i] = new Data.ToPhi(array);
             }
+
+            System.out.println("Passed");
 
             return new Data.ToPhi(result);
         }));

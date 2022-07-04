@@ -35,3 +35,12 @@
       res.at 3
       4
 
+[] > with-do-not-crashed
+  map * > mp
+  (mp.with 1 2).with 3 4 > mp2
+  seq > @
+    stdout
+      sprintf
+        "%d\n"
+        mp2.length
+    TRUE
