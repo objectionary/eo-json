@@ -42,9 +42,26 @@
         mp2.length
     TRUE
 
+# Speed test
+[] > with-many-objects
+  map * > mp
+  ((((((mp.with 1 "a").with 2 "b").with 3 "c").with 4 "d").with 5 "e").with 6 "f") > mp2
+  eq. > @
+    mp2.length
+    6
+
 [] > find-do-not-crashed
   map * > mp
   mp.find 1 > res
   eq. > @
     res.length
     0
+
+# TODO
+[] > find-and-with
+  map * > fmp!
+  ((fmp.with 1 "a").with "abc" "cba").with 4 5 > mp!
+  and. > @
+    eq.
+      mp.length
+      3

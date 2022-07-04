@@ -26,11 +26,11 @@
         (a.with ((x.at 0).as-hash)) > @
 
   [key value] > with
-    * key value > new-pair
-    ^.concat-all-arrays m > caa
-    caa.with new-pair > arr
-    ^.pairs-to-hash arr > harr
-    rebuild harr arr > table
+    * key value > new-pair!
+    ^.concat-all-arrays m > caa!
+    caa.with new-pair > arr!
+    ^.pairs-to-hash arr > harr!
+    rebuild harr arr > table!
     map table > @
 
   [key arr] > find-in-list
@@ -45,9 +45,8 @@
           * (x.at 1)
           a
 
-  #  > @
   [key] > find
-    number (key.as-hash) > num
+    number (key.as-hash) > num!
     if. > @
       eq.
         m.length

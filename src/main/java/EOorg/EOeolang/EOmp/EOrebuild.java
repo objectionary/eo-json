@@ -22,8 +22,6 @@ public class EOrebuild extends PhDefault {
                 hashes.add(Math.toIntExact(x));
             }
 
-            System.out.println("Elements count: " + hashes.size());
-
             // This value can be changed for memory or speed optimization
             int TABLE_SIZE = hashes.size();
 
