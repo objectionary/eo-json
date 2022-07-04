@@ -45,10 +45,10 @@
 # Speed test
 [] > with-many-objects
   map * > mp
-  ((((((mp.with 1 "a").with 2 "b").with 3 "c").with 4 "d").with 5 "e").with 6 "f") > mp2
+  ((((((((mp.with 1 "a").with 2 "b").with 3 "c").with 4 "d").with 5 "e").with 6 "f").with 7 "g").with 8 "h") > mp2
   eq. > @
     mp2.length
-    6
+    8
 
 [] > find-in-list-works
   map * > mp!
@@ -70,9 +70,25 @@
     res.length
     0
 
-# TODO
 [] > find-works
-  TRUE > @
+  map (* (*) (* (* 4 "a")) (* (* 2 "c") (* 8 "c"))) > mp!
+  mp.find 2 > r2!
+  mp.find 3 > r3!
+  mp.find 4 > r4!
+  mp.find 8 > r8!
+  and. > @
+    eq.
+      r2.at 0
+      "c"
+    eq.
+      r3.length
+      0
+    eq.
+      r4.at 0
+      "a"
+    eq.
+      r8.at 0
+      "c"
 
 # TODO
 [] > find-and-with
