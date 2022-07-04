@@ -50,18 +50,36 @@
     mp2.length
     6
 
+[] > find-in-list-works
+  map * > mp!
+  * (* 1 2) (* "abc" "bca") (* "a" 42) > list!
+  mp.find-in-list "abc" list > res!
+  mp.find-in-list "c" list > res2!
+  and. > @
+    eq.
+      res.length
+      1
+    eq.
+      res2.length
+      0
+
 [] > find-do-not-crashed
-  map * > mp
-  mp.find 1 > res
+  map * > mp!
+  mp.find 1 > res!
   eq. > @
     res.length
     0
 
 # TODO
+[] > find-works
+  TRUE > @
+
+# TODO
 [] > find-and-with
   map * > fmp!
   ((fmp.with 1 "a").with "abc" "cba").with 4 5 > mp!
-  and. > @
-    eq.
-      mp.length
-      3
+  TRUE > @
+
+# TODO
+[] > map-of-maps
+  TRUE > @

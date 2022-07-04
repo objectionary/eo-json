@@ -41,8 +41,8 @@
         if. > @
           eq.
             key
-            x
-          * (x.at 1)
+            (x.at 0)
+          a.with (x.at 1)
           a
 
   [key] > find
