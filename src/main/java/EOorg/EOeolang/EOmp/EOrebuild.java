@@ -37,8 +37,6 @@ public class EOrebuild extends PhDefault {
 
             Phi[] result = new Phi[TABLE_SIZE];
 
-            System.out.println("HERE 3");
-
             for (int i = 0;i < TABLE_SIZE;++i) {
                 Phi[] array = new Phi[table.get(i).size()];
                 for (int j = 0;j < table.get(i).size();++j) {
@@ -46,8 +44,6 @@ public class EOrebuild extends PhDefault {
                 }
                 result[i] = new Data.ToPhi(array);
             }
-
-            System.out.println("HERE 4");
 
             return new Data.ToPhi(result);
         }));
