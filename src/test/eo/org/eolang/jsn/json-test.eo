@@ -1,29 +1,5 @@
 +package org.eolang.jsn
-+alias org.eolang.jsn.json
 +junit
 
-[] > check-data-is-empty
-  not. > @
-    is-empty.
-      json "data"
-
-[] > check-data-is-empty-2
-  is-empty. > @
-    json ""
-
-[] > check-data-size
-  eq. > @
-    size.
-      json "data"
-    4
-
-[] > parse-test
-  eq. > @
-    ((json "").parse "text").size
-    4
-
-[] > leaf-test
-  json "title" > x!
-  eq. > @
-    (x.leaf "text").size
-    9
+[] > empty-test
+  TRUE > @

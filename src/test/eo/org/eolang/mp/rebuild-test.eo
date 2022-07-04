@@ -4,9 +4,9 @@
 
 [] > rebuild-test
   * 1 2 > harr
-  * "1" "2" > arr
+  * 3 4 > arr
   rebuild harr arr > res
   seq > @
     eq.
       res.length
-      4
+      2

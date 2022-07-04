@@ -1,4 +1,5 @@
 package EOorg.EOeolang.EOmp;
+import EOorg.EOeolang.EOint;
 import org.eolang.*;
 
 @SuppressWarnings("PMD.AvoidDollarSigns")
@@ -13,17 +14,13 @@ public class EOrebuild extends PhDefault {
             final Phi[] harr = new Dataized(rho.attr("harr").get()).take(Phi[].class);
             final Phi[] arr = new Dataized(rho.attr("arr").get()).take(Phi[].class);
 
-            System.out.println("Rebuild");
             for (final Phi item : harr) {
-                System.out.println("here");
-//                System.out.println(item);
+                final Long x = new Dataized(item).take(Long.class);
+                System.out.println(x);
 //                final Phi x = new Param(item).strong(Phi.class);
-//                System.out.println(x);
             }
 
-            final Phi phi = new Data.ToPhi(1);
-            final Long x = new Param(phi).strong(Long.class);
-            System.out.println("value = " + x);
+//            new PhWith( new EOmap(rho), 0, new Data.ToPhi(dest) )
 
 //            final Phi phi = new Data.ToPhi(arr);
 
