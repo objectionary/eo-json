@@ -17,13 +17,16 @@ map * > mp
 # When you put the object using method 'with' you get new map with this new object.
 # Each element you put is an array of two elements: (* key value)
 # This is how to put objects
-with. > mp 2
+with. > mp2
   with.
     with.
       mp
-      (* 34 9)
-    (* 55 "hello")
-  (* "name" "eugene")
+      34
+      9
+    55
+    "hello"
+  "name" 
+  "eugene"
   
 # 'find' returns an array empty (if the item wasn't found)
 # or with one element (if the item was found)
@@ -34,6 +37,13 @@ if. > name
   res.is-empty
   "unnamed"
   res.get 0
+```
+
+How to remove object from map
+```
+mp2.without 55 > mp3
+mp2.find 55 > res1 // here is a one-item array
+mp3.find 55 > res2 // it's empty here
 ```
 
 This is how to create json object

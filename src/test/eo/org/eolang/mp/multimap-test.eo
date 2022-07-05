@@ -42,10 +42,40 @@
 # Speed test
 [] > with-many-objects
   multimap * > mp!
-  ((((((((mp.with 1 "a").with 2 "b").with 3 "c").with 4 "d").with 5 "e").with 6 "f").with 7 "g").with 8 "h") > mp2!
+  with. > mp2!
+    with.
+      with.
+        with.
+          with.
+            with.
+              with.
+                with.
+                  with.
+                    with.
+                      mp
+                      1
+                      "a"
+                    2
+                    "b"
+                  3
+                  "c"
+                4
+                "d"
+              5
+              "e"
+            6
+            "f"
+          7
+          "g"
+        8
+        "h"
+      9
+      "i"
+    10
+    "j"
   eq. > @
     mp2.length
-    8
+    10
 
 [] > find-in-list-works
   multimap * > mp!
