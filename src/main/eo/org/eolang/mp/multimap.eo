@@ -3,7 +3,7 @@
 +alias org.eolang.mp.rebuild
 +alias org.eolang.math.number
 
-[m] > map
+[m] > multimap
 
   m > @
 
@@ -31,7 +31,7 @@
     caa.with new-pair > arr!
     ^.pairs-to-hash arr > harr!
     rebuild harr arr > table!
-    map table > @
+    multimap table > @
 
   [key arr] > find-in-list
     reduce. > @

@@ -1,11 +1,11 @@
 +package org.eolang.mp
 +alias org.eolang.txt.sprintf
 +alias org.eolang.io.stdout
-+alias org.eolang.mp.map
++alias org.eolang.mp.multimap
 +junit
 
 [] > pairs-to-hash-test
-  map * > mp
+  multimap * > mp
   * (* "key" 2) (* 2 3) (* 3 4) > arr
   mp.pairs-to-hash arr > tarr
   seq > @
@@ -21,7 +21,7 @@
       3
 
 [] > concat-all-arrays-test
-  map * > mp
+  multimap * > mp
   * (* 1 2 3) (* 4 5 6 7) (* 8) (*) (* 9) (*) > arr
   mp.concat-all-arrays arr > res
   and. > @
@@ -33,7 +33,7 @@
       4
 
 [] > with-do-not-crashed
-  map * > mp
+  multimap * > mp
   (mp.with 1 2).with 3 4 > mp2
   seq > @
     stdout
@@ -44,14 +44,14 @@
 
 # Speed test
 [] > with-many-objects
-  map * > mp
+  multimap * > mp
   ((((((((mp.with 1 "a").with 2 "b").with 3 "c").with 4 "d").with 5 "e").with 6 "f").with 7 "g").with 8 "h") > mp2
   eq. > @
     mp2.length
     8
 
 [] > find-in-list-works
-  map * > mp!
+  multimap * > mp!
   * (* 1 2) (* "abc" "bca") (* "a" 42) > list!
   mp.find-in-list "abc" list > res!
   mp.find-in-list "c" list > res2!
@@ -64,14 +64,14 @@
       0
 
 [] > find-do-not-crashed
-  map * > mp!
+  multimap * > mp!
   mp.find 1 > res!
   eq. > @
     res.length
     0
 
 [] > find-works
-  map (* (*) (* (* 4 "a")) (* (* 2 "c") (* 8 "c"))) > mp!
+  multimap (* (*) (* (* 4 "a")) (* (* 2 "c") (* 8 "c"))) > mp!
   mp.find 2 > r2!
   mp.find 3 > r3!
   mp.find 4 > r4!
@@ -90,9 +90,8 @@
       r8.at 0
       "c"
 
-# TODO
 [] > find-and-with
-  map * > fmp!
+  multimap * > fmp!
   ((((fmp.with 1 "a").with "abc" "cba").with 4 5).with 3 5) > mp!
   mp.find 1 > r1!
   mp.find 2 > r2!
@@ -116,9 +115,8 @@
       rabc.at 0
       "cba"
 
-# TODO
 [] > map-of-maps
-  map * > init-mp!
+  multimap * > init-mp!
   (init-mp.with 1 2).with 3 4 > mp1!
   (init-mp.with "a" "b").with "c" "d" > mp2!
   init-mp.with TRUE FALSE > mp3!
