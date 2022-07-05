@@ -4,7 +4,7 @@
 +alias org.eolang.mp.multimap
 +junit
 
-[] > pairs-to-hash-test
+[] > multimap-pairs-to-hash-test
   multimap * > mp!
   * (* "key" 2) (* 2 3) (* 3 4) > arr!
   mp.pairs-to-hash arr > tarr!
@@ -20,7 +20,7 @@
       tarr.at 2
       3
 
-[] > concat-all-arrays-test
+[] > multimap-concat-all-arrays-test
   multimap * > mp!
   * (* 1 2 3) (* 4 5 6 7) (* 8) (*) (* 9) (*) > arr!
   mp.concat-all-arrays arr > res!
@@ -32,7 +32,7 @@
       res.at 3
       4
 
-[] > with-do-not-crashed
+[] > multimap-with-do-not-crashed
   multimap * > mp!
   (mp.with 1 2).with 3 4 > mp2!
   eq. > @
@@ -40,7 +40,7 @@
     2
 
 # Speed test
-[] > with-many-objects
+[] > multimap-with-many-objects
   multimap * > mp!
   with. > mp2!
     with.
@@ -77,7 +77,7 @@
     mp2.length
     10
 
-[] > find-in-list-works
+[] > multimap-find-in-list-works
   multimap * > mp!
   * (* 1 2) (* "abc" "bca") (* "a" 42) > list!
   mp.find-in-list "abc" list > res!
@@ -90,14 +90,14 @@
       res2.length
       0
 
-[] > find-do-not-crashed
+[] > multimap-find-do-not-crashed
   multimap * > mp!
   mp.find 1 > res!
   eq. > @
     res.length
     0
 
-[] > find-works
+[] > multimap-find-works
   multimap (* (*) (* (* 4 "a")) (* (* 2 "c") (* 8 "c"))) > mp!
   mp.find 2 > r2!
   mp.find 3 > r3!
@@ -117,7 +117,7 @@
       r8.at 0
       "c"
 
-[] > find-and-with
+[] > multimap-find-and-with
   multimap * > fmp!
   ((((fmp.with 1 "a").with "abc" "cba").with 4 5).with 3 5) > mp!
   mp.find 1 > r1!
@@ -142,7 +142,7 @@
       rabc.at 0
       "cba"
 
-[] > map-of-maps
+[] > multimap-of-multimaps
   multimap * > init-mp!
   (init-mp.with 1 2).with 3 4 > mp1!
   (init-mp.with "a" "b").with "c" "d" > mp2!
@@ -156,7 +156,7 @@
       (((mp-res.find 1).at 0).find "c").at 0
       "d"
 
-[] > without-works
+[] > multimap-without-works
   multimap * > init-mp!
   (((init-mp.with 1 "a").with 3 "c").with 2 "b").with 4 "d" > mp!
   (mp.without 2).without 3 > mp2!
@@ -172,4 +172,16 @@
       0
     eq.
       (mp2.find 4).length
+      1
+
+[] > multimap-without-many-elements
+  multimap * > init-mp!
+  ((init-mp.with 1 "a").with 2 "b").with 1 "c" > mp!
+  mp.without 1 > mp2!
+  and. > @
+    eq.
+      mp.length
+      3
+    eq.
+      mp2.length
       1

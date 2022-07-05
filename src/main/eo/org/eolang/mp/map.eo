@@ -1,0 +1,36 @@
++package org.eolang.mp
++alias org.eolang.mp.multimap
++alias org.eolang.math.number
++alias org.eolang.mp.rebuild
+
+[m] > map
+
+  m > @
+
+  [key value] > with
+    multimap * > mmp!
+    * key value > new-pair!
+    mmp.concat-all-arrays m > caa!
+    mmp.without-in-list key caa > wcaa!
+    wcaa.with new-pair > arr!
+    mmp.pairs-to-hash arr > harr!
+    rebuild harr arr > table!
+    map table > @
+
+  [key] > find
+    multimap * > mmp!
+    number (key.as-hash) > num!
+    if. > @
+      eq.
+        m.length
+        0
+      *
+      mmp.find-in-list key (m.at (num.mod (m.length)))
+
+  [key] > without
+    multimap * > mmp!
+    mmp.concat-all-arrays m > caa!
+    mmp.without-in-list key caa > arr!
+    mmp.pairs-to-hash arr > harr!
+    rebuild harr arr > table!
+    map table > @
