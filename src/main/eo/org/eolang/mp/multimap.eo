@@ -7,9 +7,10 @@
 
   m > @
 
-  # Returns hash-table length
+  # Returns amount of elements in multimap
   [] > length
-    m.length > @
+    ^.concat-all-arrays m > arr!
+    arr.length > @
 
   [arr] > concat-all-arrays
     reduce. > @

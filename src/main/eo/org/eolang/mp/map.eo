@@ -7,6 +7,12 @@
 
   m > @
 
+  # Returns amount of elements in map
+  [] > length
+    multimap * > mmp!
+    mmp.concat-all-arrays m > arr!
+    arr.length > @
+
   [key value] > with
     multimap * > mmp!
     * key value > new-pair!
