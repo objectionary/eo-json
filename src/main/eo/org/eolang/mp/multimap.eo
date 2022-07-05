@@ -53,3 +53,22 @@
         0
       *
       ^.find-in-list key (m.at (num.mod (m.length)))
+
+  [key arr] > without-in-list
+    reduce. > @
+      arr
+      *
+      [a x]
+        if. > @
+          eq.
+            key
+            (x.at 0)
+          a
+          a.with x
+
+  [key] > without
+    ^.concat-all-arrays m > caa!
+    ^.without-in-list key caa > arr!
+    ^.pairs-to-hash arr > harr!
+    rebuild harr arr > table!
+    multimap table > @

@@ -5,9 +5,9 @@
 +junit
 
 [] > pairs-to-hash-test
-  multimap * > mp
-  * (* "key" 2) (* 2 3) (* 3 4) > arr
-  mp.pairs-to-hash arr > tarr
+  multimap * > mp!
+  * (* "key" 2) (* 2 3) (* 3 4) > arr!
+  mp.pairs-to-hash arr > tarr!
   seq > @
     stdout
       sprintf
@@ -21,9 +21,9 @@
       3
 
 [] > concat-all-arrays-test
-  multimap * > mp
-  * (* 1 2 3) (* 4 5 6 7) (* 8) (*) (* 9) (*) > arr
-  mp.concat-all-arrays arr > res
+  multimap * > mp!
+  * (* 1 2 3) (* 4 5 6 7) (* 8) (*) (* 9) (*) > arr!
+  mp.concat-all-arrays arr > res!
   and. > @
     eq.
       res.length
@@ -33,19 +33,16 @@
       4
 
 [] > with-do-not-crashed
-  multimap * > mp
-  (mp.with 1 2).with 3 4 > mp2
-  seq > @
-    stdout
-      sprintf
-        "%d\n"
-        mp2.length
-    TRUE
+  multimap * > mp!
+  (mp.with 1 2).with 3 4 > mp2!
+  eq. > @
+    mp2.length
+    2
 
 # Speed test
 [] > with-many-objects
-  multimap * > mp
-  ((((((((mp.with 1 "a").with 2 "b").with 3 "c").with 4 "d").with 5 "e").with 6 "f").with 7 "g").with 8 "h") > mp2
+  multimap * > mp!
+  ((((((((mp.with 1 "a").with 2 "b").with 3 "c").with 4 "d").with 5 "e").with 6 "f").with 7 "g").with 8 "h") > mp2!
   eq. > @
     mp2.length
     8
@@ -128,3 +125,21 @@
     eq.
       (((mp-res.find 1).at 0).find "c").at 0
       "d"
+
+[] > without-works
+  multimap * > init-mp!
+  (((init-mp.with 1 "a").with 3 "c").with 2 "b").with 4 "d" > mp!
+  (mp.without 2).without 3 > mp2!
+  and. > @
+    eq.
+      (mp.find 1).length
+      1
+    eq.
+      (mp.find 2).length
+      1
+    eq.
+      (mp2.find 3).length
+      0
+    eq.
+      (mp2.find 4).length
+      1
