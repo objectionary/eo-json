@@ -21,8 +21,6 @@
 # SOFTWARE.
 
 +package org.eolang.mp
-+alias org.eolang.txt.sprintf
-+alias org.eolang.io.stdout
 +alias org.eolang.mp.multimap
 +alias org.eolang.hamcrest.assert-that
 +junit
@@ -41,61 +39,35 @@
   * 1 0 3 0 > harr
   * (* 1 "a") (* 4 "b") (* "c" 5) (* 8 7) > arr
   mmp.rebuild harr arr > res
-  seq > @
-    stdout
-      sprintf
-        "sizes : [%d %d %d %d]\n"
-        (res.at 0).length
-        (res.at 1).length
-        (res.at 2).length
-        (res.at 3).length
-    stdout
-      sprintf
-        "values :\n  (%d, %s) (%d, %d)\n  (%d, %s)\n  \n  (%s, %d)\n"
-        ((res.at 0).at 0).at 0
-        ((res.at 0).at 0).at 1
-        ((res.at 0).at 1).at 0
-        ((res.at 0).at 1).at 1
-        ((res.at 1).at 0).at 0
-        ((res.at 1).at 0).at 1
-        ((res.at 3).at 0).at 0
-        ((res.at 3).at 0).at 1
-    TRUE
+  assert-that > @
+    * ((res.at 0).length) ((res.at 1).length) ((res.at 2).length) ((res.at 3).length) (((res.at 0).at 0).at 0) (((res.at 3).at 0).at 1)
+    $.equal-to
+      * 2 1 0 1 4 5
 
 [] > multimap-pairs-to-hash-test
   multimap * > mp!
   * (* "key" 2) (* 2 3) (* 3 4) > arr!
   mp.pairs-to-hash arr > tarr!
-  seq > @
-    stdout
-      sprintf
-        "tarr size = %d\nvalues: %d %d %d\n"
-        tarr.length
-        tarr.at 0
-        tarr.at 1
-        tarr.at 2
-    eq.
-      tarr.at 2
-      3
+  assert-that > @
+    * (tarr.length) (tarr.at 0) (tarr.at 1) (tarr.at 2)
+    $.equal-to
+      * 3 106079 2 3
 
 [] > multimap-concat-all-arrays-test
   multimap * > mp!
   * (* 1 2 3) (* 4 5 6 7) (* 8) (*) (* 9) (*) > arr!
   mp.concat-all-arrays arr > res!
-  and. > @
-    eq.
-      res.length
-      9
-    eq.
-      res.at 3
-      4
+  assert-that > @
+    * (res.length) (res.at 3)
+    $.equal-to
+      * 9 4
 
 [] > multimap-with-do-not-crashed
   multimap * > mp!
   (mp.with 1 2).with 3 4 > mp2!
-  eq. > @
+  assert-that > @
     mp2.length
-    2
+    $.equal-to 2
 
 # Speed test
 [] > multimap-with-many-objects
@@ -131,29 +103,26 @@
       "i"
     10
     "j"
-  eq. > @
+  assert-that > @
     mp2.length
-    10
+    $.equal-to 10
 
 [] > multimap-find-in-list-works
   multimap * > mp!
   * (* 1 2) (* "abc" "bca") (* "a" 42) > list!
   mp.find-in-list "abc" list > res!
   mp.find-in-list "c" list > res2!
-  and. > @
-    eq.
-      res.length
-      1
-    eq.
-      res2.length
-      0
+  assert-that > @
+    * (res.length) (res2.length)
+    $.equal-to
+      * 1 0
 
 [] > multimap-find-do-not-crashed
   multimap * > mp!
   mp.find 1 > res!
-  eq. > @
+  assert-that > @
     res.length
-    0
+    $.equal-to 0
 
 [] > multimap-find-works
   multimap (* (*) (* (* 4 "a")) (* (* 2 "c") (* 8 "c"))) > mp!
@@ -218,28 +187,16 @@
   multimap * > init-mp!
   (((init-mp.with 1 "a").with 3 "c").with 2 "b").with 4 "d" > mp!
   (mp.without 2).without 3 > mp2!
-  and. > @
-    eq.
-      (mp.find 1).length
-      1
-    eq.
-      (mp.find 2).length
-      1
-    eq.
-      (mp2.find 3).length
-      0
-    eq.
-      (mp2.find 4).length
-      1
+  assert-that > @
+    * ((mp.find 1).length) ((mp.find 2).length) ((mp2.find 3).length) ((mp2.find 4).length)
+    $.equal-to
+      * 1 1 0 1
 
 [] > multimap-without-many-elements
   multimap * > init-mp!
   ((init-mp.with 1 "a").with 2 "b").with 1 "c" > mp!
   mp.without 1 > mp2!
-  and. > @
-    eq.
-      mp.length
-      3
-    eq.
-      mp2.length
-      1
+  assert-that > @
+    * (mp.length) (mp2.length)
+    $.equal-to
+      * 3 1

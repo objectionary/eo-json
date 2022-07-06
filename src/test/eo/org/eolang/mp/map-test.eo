@@ -22,14 +22,15 @@
 
 +package org.eolang.mp
 +alias org.eolang.mp.map
++alias org.eolang.hamcrest.assert-that
 +junit
 
 [] > map-find-do-not-crashed
   map * > mp!
   mp.find 1 > res!
-  eq. > @
+  assert-that > @
     res.length
-    0
+    $.equal-to 0
 
 [] > map-find-works
   map (* (*) (* (* 4 "a")) (* (* 2 "c") (* 8 "c"))) > mp!
@@ -94,19 +95,10 @@
   map * > init-mp!
   (((init-mp.with 1 "a").with 3 "c").with 2 "b").with 4 "d" > mp!
   (mp.without 2).without 3 > mp2!
-  and. > @
-    eq.
-      (mp.find 1).length
-      1
-    eq.
-      (mp.find 2).length
-      1
-    eq.
-      (mp2.find 3).length
-      0
-    eq.
-      (mp2.find 4).length
-      1
+  assert-that > @
+    * ((mp.find 1).length) ((mp.find 2).length) ((mp2.find 3).length) ((mp2.find 4).length)
+    $.equal-to
+      * 1 1 0 1
 
 [] > map-without-many-elements
   map * > init-mp!
