@@ -23,7 +23,6 @@
 +package org.eolang.mp
 +alias org.eolang.mp.multimap
 +alias org.eolang.math.number
-+alias org.eolang.mp.rebuild
 
 [m] > map
 
@@ -44,7 +43,7 @@
     mmp.without-in-list key caa > wcaa!
     wcaa.with new-pair > arr!
     mmp.pairs-to-hash arr > harr!
-    rebuild harr arr > table!
+    mmp.rebuild harr arr > table!
     map table > @
 
   # Returns an array with the found value
@@ -66,5 +65,5 @@
     mmp.concat-all-arrays m > caa!
     mmp.without-in-list key caa > arr!
     mmp.pairs-to-hash arr > harr!
-    rebuild harr arr > table!
+    mmp.rebuild harr arr > table!
     map table > @

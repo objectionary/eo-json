@@ -24,7 +24,43 @@
 +alias org.eolang.txt.sprintf
 +alias org.eolang.io.stdout
 +alias org.eolang.mp.multimap
++alias org.eolang.hamcrest.assert-that
 +junit
+
+[] > rebuild-do-not-crush
+  multimap * > mmp
+  * 1 2 > harr
+  * 3 4 > arr
+  mmp.rebuild harr arr > res
+  assert-that > @
+    res.length
+    $.equal-to 2
+
+[] > rebuild-correct
+  multimap * > mmp
+  * 1 0 3 0 > harr
+  * (* 1 "a") (* 4 "b") (* "c" 5) (* 8 7) > arr
+  mmp.rebuild harr arr > res
+  seq > @
+    stdout
+      sprintf
+        "sizes : [%d %d %d %d]\n"
+        (res.at 0).length
+        (res.at 1).length
+        (res.at 2).length
+        (res.at 3).length
+    stdout
+      sprintf
+        "values :\n  (%d, %s) (%d, %d)\n  (%d, %s)\n  \n  (%s, %d)\n"
+        ((res.at 0).at 0).at 0
+        ((res.at 0).at 0).at 1
+        ((res.at 0).at 1).at 0
+        ((res.at 0).at 1).at 1
+        ((res.at 1).at 0).at 0
+        ((res.at 1).at 0).at 1
+        ((res.at 3).at 0).at 0
+        ((res.at 3).at 0).at 1
+    TRUE
 
 [] > multimap-pairs-to-hash-test
   multimap * > mp!

@@ -22,7 +22,6 @@
 
 +package org.eolang.mp
 +alias org.eolang.mp.concat
-+alias org.eolang.mp.rebuild
 +alias org.eolang.math.number
 
 [m] > multimap
@@ -54,7 +53,7 @@
     ^.concat-all-arrays m > caa!
     caa.with new-pair > arr!
     ^.pairs-to-hash arr > harr!
-    rebuild harr arr > table!
+    ^.rebuild harr arr > table!
     multimap table > @
 
   [key arr] > find-in-list
@@ -92,11 +91,13 @@
           a
           a.with x
 
+  [harr arr] > rebuild /array
+
   # Returns a new map, without elements with the given key
   # Returns the map itself, if there was no item with this key
   [key] > without
     ^.concat-all-arrays m > caa!
     ^.without-in-list key caa > arr!
     ^.pairs-to-hash arr > harr!
-    rebuild harr arr > table!
+    ^.rebuild harr arr > table!
     multimap table > @
