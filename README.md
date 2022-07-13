@@ -113,7 +113,7 @@ with. > x2
   "good"
 ```
 
-**x** after the previous block of code
+**x2** after the previous block of code
 ```
 {
   "age": 20,
