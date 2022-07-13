@@ -28,11 +28,11 @@ with. > mp2
   "name" 
   "eugene"
   
-# 'find' returns an array empty (if the item wasn't found)
+# 'found' returns an array empty (if the item wasn't found)
 # or with one element (if the item was found)
   
 # How to get object from map by key
-mp2.find "name" > res
+mp2.found "name" > res
 if. > name
   res.is-empty
   "unnamed"
@@ -48,8 +48,6 @@ mp3.find 55 > res2 // it's empty here
 
 This is how to create json object
 ```
-+alias org.eolang.io.stdout
-+alias org.eolang.txt.sprintf
 +alias org.eolang.fs.json
 +alias org.eolang.collections.map
 
@@ -85,19 +83,20 @@ Simple manipulations
 ```
 json.parse data > x
 
-# 'leaf' takes one or more values, and deepens along the specified path
-# if an object with this name did not exist, it creates an empty json object
-x.leaf "books" > books
+# 'found' returns an array empty (if the item wasn't found)
+# or with one element (if the item was found).
+# If the array isn't empty, the element in it is also a json
+(x.found "books").at 0 > books
 
-# 'write' operation puts the object in the field where we are now
-(x.leaf "essence").write "bookcase"
+# 'with' operation puts the object in the field where we are now
+x.with key some-json > new-x
 
 stdout > @
   sprintf
     "In the %s %s I took a book called %s"
-    (x.leaf "description" "color").as-string
-    (x.leaf "essence").as-string
-    ((books.get 0).leaf "title").as-string 
+    ((((x.found "description").at 0).found "color").at 0).as-string
+    ((x.found "essence").at 0).as-string
+    (((books.at 0).found "title").at 0).as-string 
 ```
 
 The creation and use of a new json object
@@ -105,9 +104,13 @@ The creation and use of a new json object
 # creating of empty json object
 json.parse "{}" > x
 
-(x.leaf "age").write 20
-  
-(x.leaf "state").write "good"
+with. > x2
+  with.
+    x
+    "age"
+    20
+  "state"
+  "good"
 ```
 
 **x** after the previous block of code
