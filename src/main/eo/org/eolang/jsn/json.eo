@@ -1,17 +1,28 @@
 +package org.eolang.jsn
++alias org.eolang.collections.map
 +rt jvm org.eolang:eo-json:0.0.0
 
-[data] > json
-  data > @
+[m] > json
+  m > @
 
-  # Check json is empty.
-  [] > is-empty /bool
+  [key] > found
+    m.found > res!
+    if. > @
+      eq.
+        res.length
+        0
+      *
+      * (json (res.at 0))
 
-  # Get json size in bytes.
-  [] > size /int
+  [index] > at
+    m.at index > @
 
-  # Get json from string
-  [d] > parse /json
+  [] > as-string
+    ^.m > @
 
-  # Go to leaf 'name'
-  [name] > leaf /json
+  # Now we think, that json-array doesn't exist
+  [key value] > with
+    (json (m.with key value)) > @
+
+  [text] > parse
+    json (map *) > @

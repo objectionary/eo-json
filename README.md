@@ -51,11 +51,11 @@ This is how to create json object
 +alias org.eolang.fs.json
 +alias org.eolang.collections.map
 
-# The first way is to parse the text
-json.parse "there should be a json string" > x
-
-# The second way is to wrap the map (here 'mp' has the type map)
+# The first way is to wrap the map (here 'mp' has the type map)
 json mp > x
+
+# The second way is to parse the text
+x.parse "there should be a json string" > x2
 ```
 
 JSON string for the following examples (the name of the string is **data**)
@@ -102,7 +102,7 @@ stdout > @
 The creation and use of a new json object
 ```
 # creating of empty json object
-json.parse "{}" > x
+jsn.parse "{}" > x
 
 with. > x2
   with.
