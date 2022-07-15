@@ -19,3 +19,14 @@
     $.equal-to
       list
         * 2 42 -12
+
+# {"person": {"age":18, "weight":65}}
+[] > with-json-and-with-int
+  create-json > init!
+  create-json > j-person!
+  (init.with-json "person" j-person) > jres!
+  assert-that > @
+    * (jres.size) (((jres.found "person").at 0).size)
+    $.equal-to
+      list
+        * 1 0
