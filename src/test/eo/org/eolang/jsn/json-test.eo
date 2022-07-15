@@ -1,5 +1,18 @@
 +package org.eolang.jsn
++alias org.eolang.jsn.create-json
++alias org.eolang.hamcrest.assert-that
 +junit
 
-[] > empty-test
-  TRUE > @
+[] > with-do-not-crush
+  create-json > j1!
+  (j1.with-int 0 0).with-int 1 1 > j2!
+  eq. > @
+    j2.size
+    2
+
+[] > with-int-and-found
+  create-json > j1!
+  (j1.with-int "key1" 42).with-int "key2" -12 > j2!
+  assert-that > @
+    (j2.found "key2").length
+    $.equal-to 1

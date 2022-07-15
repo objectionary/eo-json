@@ -1,0 +1,9 @@
++package org.eolang.jsn
++alias org.eolang.jsn.create-json
++junit
+
+[] > create-json-test
+  create-json > x!
+  eq. > @
+    x.size
+    0

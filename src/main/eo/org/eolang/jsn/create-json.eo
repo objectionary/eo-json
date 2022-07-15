@@ -1,0 +1,7 @@
++package org.eolang.jsn
++alias org.eolang.collections.map
++alias org.eolang.jsn.json
++rt jvm org.eolang:eo-json:0.0.0
+
+[] > create-json
+  json (map *) > @
