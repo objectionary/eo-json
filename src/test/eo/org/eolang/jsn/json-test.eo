@@ -1,6 +1,7 @@
 +package org.eolang.jsn
 +alias org.eolang.jsn.create-json
 +alias org.eolang.hamcrest.assert-that
++alias org.eolang.collections.list
 +junit
 
 [] > with-do-not-crush
@@ -14,5 +15,7 @@
   create-json > j1!
   (j1.with-int "key1" 42).with-int "key2" -12 > j2!
   assert-that > @
-    (j2.found "key2").length
-    $.equal-to 1
+    * (j2.size) ((j2.found "key1").at 0) ((j2.found "key2").at 0)
+    $.equal-to
+      list
+        * 2 42 -12

@@ -20,7 +20,7 @@
 
   # Done
   [key] > found
-    m.found > res!
+    m.found key > res!
     if. > @
       eq.
         res.length
