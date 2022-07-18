@@ -13,20 +13,20 @@
 
 [] > with-int-and-found
   create-json > j1!
-  (j1.with-int "key1" 42).with-int "key2" -12 > j2!
+  (j1.with-int "key12" 42).with-int "key2" -12 > j2!
   assert-that > @
-    * (j2.size) ((j2.found "key1").at 0) ((j2.found "key2").at 0)
+    * (j2.size) ((j2.find "key12").at 0)
     $.equal-to
       list
-        * 2 42 -12
+        * 2 42
 
-# {"person": {"age":18, "weight":65}}
 [] > with-json-and-with-int
   create-json > init!
-  create-json > j-person!
-  (init.with-json "person" j-person) > jres!
+  (init.with-int "a" 18).with-int "w" 65 > j-person!
+  (init.with-json "he" j-person) > jres!
   assert-that > @
-    * (jres.size) (((jres.found "person").at 0).size)
+    * (jres.size) (((jres.find "he").at 0).size) ((jres.find "json").length)
     $.equal-to
       list
-        * 1 0
+        * 1 2 0
+
