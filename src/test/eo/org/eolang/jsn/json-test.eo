@@ -2,6 +2,7 @@
 +alias org.eolang.jsn.create-json
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.collections.list
++alias org.eolang.collections.map
 +junit
 
 [] > with-do-not-crush
@@ -11,7 +12,7 @@
     j2.size
     2
 
-[] > with-int-and-found
+[] > with-int-and-find
   create-json > j1!
   (j1.with-int "key12" 42).with-int "key2" -12 > j2!
   assert-that > @
@@ -29,4 +30,15 @@
     $.equal-to
       list
         * 1 2 0
+
+[] > with-json-and-with-map
+  create-json > init!
+  (map *).with "key" "value" > mp!
+  (init.with-int "a" 18).with-int "map" mp > j-person!
+  (init.with-json "he" j-person) > jres!
+  assert-that > @
+    * (jres.size) (((jres.find "he").at 0).size) ((((((jres.find "he").at 0).find "map").at 0).found "key").at 0)
+    $.equal-to
+      list
+        * 1 2 "value"
 
