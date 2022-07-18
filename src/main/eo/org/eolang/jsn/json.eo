@@ -3,12 +3,12 @@
 +rt jvm org.eolang:eo-json:0.0.0
 
 # Codes of types:
-# 0 - int *
+# 0 - int
 # 1 - float
 # 2 - string
 # 3 - array
-# 4 - map *
-# 5 - json *
+# 4 - map
+# 5 - json
 [m] > json
 
   # This is a map
@@ -28,21 +28,29 @@
       *
       * ((res.at 0).at 1)
 
-  # Done
   [index] > at
     m.at index > @
 
-  # Done
   [key value] > with-int
     m.with key (* 0 value) > m2!
     json m2 > @
 
-  # Done
+  [key value] > with-float
+    m.with key (* 1 value) > m2!
+    json m2 > @
+
+  [key value] > with-string
+    m.with key (* 2 value) > m2!
+    json m2 > @
+
+  [key value] > with-array
+    m.with key (* 3 value) > m2!
+    json m2 > @
+
   [key value] > with-map
     m.with key (* 4 value) > m2!
     json m2 > @
 
-  # Done
   [key value] > with-json
     m.with key (* 5 value) > m2!
     json m2 > @
@@ -50,6 +58,18 @@
   # WRONG
   [] > as-string
     ^.m > @
+
+  # Returns a number, where each specific value corresponds
+  # to a specific type (for example int is 0, float is 1, etc.).
+  # If such a key isn't found, it returns -1
+  [key] > type-by-key
+    m.found key > res!
+    if. > @
+      eq.
+        res.length
+        0
+      -1
+      ((res.at 0).at 0)
 
   # WRONG
   [text] > parse

@@ -42,3 +42,26 @@
       list
         * 1 2 "value"
 
+[] > type-float-test
+  create-json.with-float 42 0.42 > j!
+  assert-that > @
+    * ((j.find 42).at 0) (j.type-by-key 42)
+    $.equal-to
+      list
+        * 0.42 1
+
+[] > type-string-test
+  create-json.with-string 42 "abacaba" > j!
+  assert-that > @
+    * ((j.find 42).at 0) (j.type-by-key 42)
+    $.equal-to
+      list
+        * "abacaba" 2
+
+[] > type-array-test
+  create-json.with-array 42 (* 1 2 3) > j!
+  assert-that > @
+    * (((j.find 42).at 0).at 0) (((j.find 42).at 0).at 1) (((j.find 42).at 0).at 2) (j.type-by-key 42)
+    $.equal-to
+      list
+        * 1 2 3 3
