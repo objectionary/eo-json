@@ -2,7 +2,6 @@
 +alias org.eolang.jsn.create-json
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.collections.list
-+alias org.eolang.collections.map
 +junit
 
 [] > with-do-not-crush
@@ -31,17 +30,6 @@
       list
         * 1 2 0
 
-[] > with-json-and-with-map
-  create-json > init!
-  (map *).with "key" "value" > mp!
-  (init.with-int "a" 18).with-int "map" mp > j-person!
-  (init.with-json "he" j-person) > jres!
-  assert-that > @
-    * (jres.size) (((jres.find "he").at 0).size) ((((((jres.find "he").at 0).find "map").at 0).found "key").at 0)
-    $.equal-to
-      list
-        * 1 2 "value"
-
 [] > type-float-test
   create-json.with-float 42 0.42 > j!
   assert-that > @
@@ -65,3 +53,39 @@
     $.equal-to
       list
         * 1 2 3 3
+
+[] > join-test
+  create-json > j!
+  "abc" > a!
+  "de" > b!
+  "" > c!
+  assert-that > @
+    * (j.join a a) (j.join a b) (j.join a c) (j.join c c) (j.join c a)
+    $.equal-to
+      list
+        * "abcabc" "abcde" "abc" "" "abc"
+
+# * (j.join-all 0 a b c) (j.join-all 0 c c c) (j.join-all 0 c b c) (j.join-all 0 a) (j.join-all 0 a a) (j.join-all 0 c)
+# * "abcde" "" "de" "abc" "abcabc" ""
+[] > join-all-test
+  create-json > j!
+  "abc" > a!
+  "de" > b!
+  "" > c!
+  assert-that > @
+    * (j.join-all a b c) (j.join-all c) (j.join-all c a c) (j.join-all b)
+    $.equal-to
+      list
+        * "abcde" "" "abc" "de"
+
+# * (j.int-to-js-str data padding)
+# * "  \"value\": 42"
+[] > int-to-json-string-test
+  create-json > j!
+  * "value" 42 > data!
+  "  " > padding!
+  assert-that > @
+    * (j.int-to-js-str data padding)
+    $.equal-to
+      list
+        * "  \"value\": 42"

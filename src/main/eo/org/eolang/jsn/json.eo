@@ -1,24 +1,23 @@
 +package org.eolang.jsn
 +alias org.eolang.collections.map
++alias org.eolang.collections.list
++alias org.eolang.math.number
 +rt jvm org.eolang:eo-json:0.0.0
 
 # Codes of types:
-# 0 - int
+# 0 - int *
 # 1 - float
 # 2 - string
 # 3 - array
-# 4 - map
-# 5 - json
+# 4 - json *
 [m] > json
 
   # This is a map
   m > @
 
-  # Done
   [] > size
     m.size > @
 
-  # Done
   [key] > find
     m.found key > res!
     if. > @
@@ -27,9 +26,6 @@
         0
       *
       * ((res.at 0).at 1)
-
-  [index] > at
-    m.at index > @
 
   [key value] > with-int
     m.with key (* 0 value) > m2!
@@ -47,12 +43,8 @@
     m.with key (* 3 value) > m2!
     json m2 > @
 
-  [key value] > with-map
-    m.with key (* 4 value) > m2!
-    json m2 > @
-
   [key value] > with-json
-    m.with key (* 5 value) > m2!
+    m.with key (* 4 value) > m2!
     json m2 > @
 
   # WRONG
@@ -74,3 +66,29 @@
   # WRONG
   [text] > parse
     json (map *) > @
+
+  [data padding] > json-to-js-str
+    TRUE > @
+
+  # ^.join-all padding "\"" (data.at 0) "\": " ((number (data.at 1)).as-string) > @
+  [data padding] > int-to-js-str
+    ((number (data.at 1)).as-string) > num!
+    ^.join-all padding "\"" (data.at 0) "\": " num > @
+
+  [type data padding] > to-js-str
+    TRUE > @
+
+  [str1 str2] > join
+    str1.as-bytes > x!
+    str2.as-bytes > y!
+    x.concat y > res!
+    res.as-string > @
+
+  [strings...] > join-all
+    reduce. > res!
+      list
+        strings
+      ("".as-bytes)
+      [a x]
+        (a.concat (x.as-bytes)) > @
+    res.as-string > @
