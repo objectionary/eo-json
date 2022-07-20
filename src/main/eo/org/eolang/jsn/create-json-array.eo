@@ -1,9 +1,0 @@
-+package org.eolang.jsn
-+alias org.eolang.jsn.json
-+rt jvm org.eolang:eo-json:0.0.0
-
-[] > create-json-array
-  json * > res!
-  seq > @
-    (res.is-json-array).write TRUE
-    res

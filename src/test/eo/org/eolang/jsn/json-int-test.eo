@@ -1,0 +1,14 @@
++package org.eolang.jsn
++alias org.eolang.hamcrest.assert-that
++alias org.eolang.collections.list
++alias org.eolang.jsn.json-int
++junit
+
+[] > json-int-as-string-test
+  json-int (* 42 "key") > a!
+  json-int (* 42) > b!
+  assert-that > @
+    * (a.as-string) (b.as-string)
+    $.equal-to
+      list
+        * "\"key\": 42" "42"

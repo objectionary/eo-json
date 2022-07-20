@@ -1,0 +1,14 @@
++package org.eolang.jsn
++alias org.eolang.jsn.json
++rt jvm org.eolang:eo-json:0.0.0
+
+# data = (* value key) or (* value) !!!
+[data] > json-string
+
+  data > @
+
+  [] > as-string
+    if. > @
+      1.eq (data.length)
+      (data.at 0)
+      json.join-all "\"" (data.at 1) "\": " (data.at 0)

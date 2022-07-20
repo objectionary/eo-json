@@ -1,111 +1,13 @@
 +package org.eolang.jsn
-+alias org.eolang.collections.map
 +alias org.eolang.collections.list
-+alias org.eolang.math.number
 +rt jvm org.eolang:eo-json:0.0.0
 
-# Codes of types:
-# 0 - int *
-# 1 - float
-# 2 - string
-# 3 - json-array
-# 4 - json *
-[m] > json
-
-  # This is a map or an array
-  m > @
-
-  memory FALSE > is-json-array
-
-  [] > size
-    m.size > @
-
-  [key] > find
-    m.found key > res!
-    if. > @
-      eq.
-        res.length
-        0
-      *
-      * ((res.at 0).at 1)
-
-  [key value] > add-int
-    m.with (* 0 value) > m2!
-    res m2
-    json m2 > @
-
-  [key value] > add-float
-    m.with (* 1 value) > m2!
-    json m2 > @
-
-  [key value] > add-string
-    m.with (* 2 value) > m2!
-    json m2 > @
-
-  [key value] > add-json-array
-    m.with (* 3 value) > m2!
-    json m2 > @
-
-  [key value] > add-json
-    m.with (* 4 value) > m2!
-    json > @
-
-  [key value] > with-int
-    m.with key (* 0 value) > m2!
-    json m2 > @
-
-  [key value] > with-float
-    m.with key (* 1 value) > m2!
-    json m2 > @
-
-  [key value] > with-string
-    m.with key (* 2 value) > m2!
-    json m2 > @
-
-  [key value] > with-json-array
-    m.with key (* 3 value) > m2!
-    json m2 > @
-
-  [key value] > with-json
-    m.with key (* 4 value) > m2!
-    json m2 > @
-
-  # WRONG
-  [] > as-string
-    ^.m > @
-
-  # Returns a number, where each specific value corresponds
-  # to a specific type (for example int is 0, float is 1, etc.).
-  # If such a key isn't found, it returns -1
-  [key] > type-by-key
-    m.found key > res!
-    if. > @
-      eq.
-        res.length
-        0
-      -1
-      ((res.at 0).at 0)
-
-  # WRONG
-  [text] > parse
-    json (map *) > @
-
-  [data padding] > json-to-js-str
-    TRUE > @
-
-  # ^.join-all padding "\"" (data.at 0) "\": " ((number (data.at 1)).as-string) > @
-  [data padding] > int-to-js-str
-    ((number (data.at 1)).as-string) > num!
-    ^.join-all padding "\"" (data.at 0) "\": " num > @
-
-  [type data padding] > to-js-str
-    TRUE > @
-
-  [str1 str2] > join
-    str1.as-bytes > x!
-    str2.as-bytes > y!
-    x.concat y > res!
-    res.as-string > @
+# Types:
+# json-object
+# json-array
+# json-string
+# json-int *
+[] > json
 
   [strings...] > join-all
     reduce. > res!

@@ -1,91 +1,15 @@
 +package org.eolang.jsn
-+alias org.eolang.jsn.create-json
-+alias org.eolang.jsn.create-json-array
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.collections.list
++alias org.eolang.jsn.json
 +junit
 
-[] > with-do-not-crush
-  create-json > j1!
-  (j1.with-int 0 0).with-int 1 1 > j2!
-  eq. > @
-    j2.size
-    2
-
-[] > with-int-and-find
-  create-json > j1!
-  (j1.with-int "key12" 42).with-int "key2" -12 > j2!
-  assert-that > @
-    * (j2.size) ((j2.find "key12").at 0)
-    $.equal-to
-      list
-        * 2 42
-
-[] > with-json-and-with-int
-  create-json > init!
-  (init.with-int "a" 18).with-int "w" 65 > j-person!
-  (init.with-json "he" j-person) > jres!
-  assert-that > @
-    * (jres.size) (((jres.find "he").at 0).size) ((jres.find "json").length)
-    $.equal-to
-      list
-        * 1 2 0
-
-[] > type-float-test
-  create-json.with-float 42 0.42 > j!
-  assert-that > @
-    * ((j.find 42).at 0) (j.type-by-key 42)
-    $.equal-to
-      list
-        * 0.42 1
-
-[] > type-string-test
-  create-json.with-string 42 "abacaba" > j!
-  assert-that > @
-    * ((j.find 42).at 0) (j.type-by-key 42)
-    $.equal-to
-      list
-        * "abacaba" 2
-
-[] > type-array-test-2
-  create-json-array > ja!
-  create-json.with-json-array 42 ja > j!
-  assert-that > @
-    (j.type-by-key 42)
-    $.equal-to 3
-
-[] > join-test
-  create-json > j!
-  "abc" > a!
-  "de" > b!
-  "" > c!
-  assert-that > @
-    * (j.join a a) (j.join a b) (j.join a c) (j.join c c) (j.join c a)
-    $.equal-to
-      list
-        * "abcabc" "abcde" "abc" "" "abc"
-
-# * (j.join-all 0 a b c) (j.join-all 0 c c c) (j.join-all 0 c b c) (j.join-all 0 a) (j.join-all 0 a a) (j.join-all 0 c)
-# * "abcde" "" "de" "abc" "abcabc" ""
 [] > join-all-test
-  create-json > j!
   "abc" > a!
   "de" > b!
   "" > c!
   assert-that > @
-    * (j.join-all a b c) (j.join-all c) (j.join-all c a c) (j.join-all b)
+    * (json.join-all a b c) (json.join-all c) (json.join-all c a c) (json.join-all b)
     $.equal-to
       list
         * "abcde" "" "abc" "de"
-
-# * (j.int-to-js-str data padding)
-# * "  \"value\": 42"
-[] > int-to-json-string-test
-  create-json > j!
-  * "value" 42 > data!
-  "  " > padding!
-  assert-that > @
-    * (j.int-to-js-str data padding)
-    $.equal-to
-      list
-        * "  \"value\": 42"

@@ -1,0 +1,16 @@
++package org.eolang.jsn
++alias org.eolang.math.number
++alias org.eolang.jsn.json
++rt jvm org.eolang:eo-json:0.0.0
+
+# data = (* value key) or (* value) !!!
+[data] > json-int
+
+  data > @
+
+  [] > as-string
+    ((number (data.at 0)).as-string) > num!
+    if. > @
+      1.eq (data.length)
+      num
+      json.join-all "\"" (data.at 1) "\": " num
