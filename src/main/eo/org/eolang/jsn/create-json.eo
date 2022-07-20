@@ -4,4 +4,7 @@
 +rt jvm org.eolang:eo-json:0.0.0
 
 [] > create-json
-  json (map *) > @
+  json (map *) > res!
+  seq > @
+    (res.is-json-array).write FALSE
+    res
