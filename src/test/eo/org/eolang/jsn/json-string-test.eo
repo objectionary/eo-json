@@ -5,8 +5,8 @@
 +junit
 
 [] > json-int-as-string-test
-  json-int (* "b" "key") > a!
-  json-int (* "abc") > b!
+  json-string (* "b" "key") > a!
+  json-string (* "abc") > b!
   assert-that > @
     * (a.as-string) (b.as-string)
     $.equal-to
