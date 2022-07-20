@@ -1,0 +1,21 @@
++package org.eolang.jsn
++alias org.eolang.collections.list
++alias org.eolang.jsn.json
++rt jvm org.eolang:eo-json:0.0.0
+
+# data = (* value key) or (* value) !!!
+[data] > json-array
+
+  data > @
+
+  [] > as-string
+    reduce. > res!
+      list
+        (data.at 0)
+      ""
+      [a x]
+        json.join-all a (x.as-string) ", " > @
+    if. > @
+      1.eq (data.length)
+      json.join-all "[" res "]"
+      json.join-all "\"" (data.at 1) "\": [" res "]"

@@ -1,0 +1,10 @@
++package org.eolang.jsn
++rt jvm org.eolang:eo-json:0.0.0
+
+# data = (* value key) or (* value) !!!
+[data] > json-object
+
+  data > @
+
+  [] > as-string
+    FALSE > @

@@ -1,0 +1,5 @@
++package org.eolang.jsn
++junit
+
+[] > empty-test-239465
+  TRUE > @
