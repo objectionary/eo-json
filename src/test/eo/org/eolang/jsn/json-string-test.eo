@@ -5,10 +5,10 @@
 +junit
 
 [] > json-string-as-string-test
-  json-string (* "b" "key") > a!
-  json-string (* "abc") > b!
+  json-string "" > a!
+  json-string "abc" > b!
   assert-that > @
     * (a.as-string) (b.as-string)
     $.equal-to
       list
-        * "\"key\": b" "abc"
+        * "\"\"" "\"abc\""

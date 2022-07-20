@@ -1,17 +1,19 @@
 +package org.eolang.jsn
 +alias org.eolang.jsn.json-array
 +alias org.eolang.jsn.json-int
++alias org.eolang.jsn.json-string
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.collections.list
 +junit
 
+# * "[10, \"abc\", ]" "[10, ]"
 [] > json-array-as-string-test
-  json-int (* 10) > a1!
-  json-int (* 20) > a2!
-  json-array (* (* a1 a2)) > ja!
-  json-array (* (* a1 a2) "numbers") > ja2!
+  json-int 10 > a!
+  json-string "abc" > b!
+  json-array (* a b) > ja!
+  json-array (*) > ja2!
   assert-that > @
     * (ja.as-string) (ja2.as-string)
     $.equal-to
       list
-        * "[10, 20, ]" "\"numbers\": [10, 20, ]"
+        * "[10, \"abc\", ]" "[]"

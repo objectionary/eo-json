@@ -1,10 +1,11 @@
 +package org.eolang.jsn
 +rt jvm org.eolang:eo-json:0.0.0
 
-# data = (* value key) or (* value) !!!
-[data] > json-object
+[value] > json-object
 
-  data > @
+  value > @
 
+  # +alias org.eolang.collections.multimap
+  # (multimap *).concat-all-arrays ((data.at 0).m) > caa!
   [] > as-string
-    FALSE > @
+    TRUE > @
