@@ -1,5 +1,6 @@
 +package org.eolang.jsn
 +alias org.eolang.jsn.create-json
++alias org.eolang.jsn.create-json-array
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.collections.list
 +junit
@@ -46,13 +47,12 @@
       list
         * "abacaba" 2
 
-[] > type-array-test
-  create-json.with-array 42 (* 1 2 3) > j!
+[] > type-array-test-2
+  create-json-array > ja!
+  create-json.with-json-array 42 ja > j!
   assert-that > @
-    * (((j.find 42).at 0).at 0) (((j.find 42).at 0).at 1) (((j.find 42).at 0).at 2) (j.type-by-key 42)
-    $.equal-to
-      list
-        * 1 2 3 3
+    (j.type-by-key 42)
+    $.equal-to 3
 
 [] > join-test
   create-json > j!
