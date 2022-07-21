@@ -1,5 +1,5 @@
 +package org.eolang.jsn
-+alias org.eolang.jsn.json
++alias org.eolang.txt.text
 +rt jvm org.eolang:eo-json:0.0.0
 
 [value] > json-string
@@ -7,4 +7,6 @@
   value > @
 
   [] > as-string
-    json.join-all "\"" value "\"" > @
+    joined. > @
+      text ""
+      * "\"" value "\""

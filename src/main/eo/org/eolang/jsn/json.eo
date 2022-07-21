@@ -4,24 +4,9 @@
 +alias org.eolang.jsn.json-string
 +alias org.eolang.jsn.json-object
 +alias org.eolang.collections.map
-+alias org.eolang.collections.list
 +rt jvm org.eolang:eo-json:0.0.0
 
-# Types:
-# json-object
-# json-array
-# json-string
-# json-int
 [] > json
-
-  [strings...] > join-all
-    reduce. > res!
-      list
-        strings
-      ("".as-bytes)
-      [a x]
-        (a.concat (x.as-bytes)) > @
-    res.as-string > @
 
   [] > of-object
     json-object (map *) > @
