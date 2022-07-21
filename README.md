@@ -2,66 +2,26 @@
 
 The main idea is that everything is a json
 
-Before using json, let's create a map object
-```
-+alias org.eolang.collections.map
-
-# It's how created a map
-map * > mp
-```
-
-How to get and put object to map
-```
-map * > mp
-
-# When you put the object using method 'with' you get new map with this new object.
-# Each element you put is an array of two elements: (* key value)
-# This is how to put objects
-with. > mp2
-  with.
-    with.
-      mp
-      34
-      9
-    55
-    "hello"
-  "name" 
-  "eugene"
-  
-# 'found' returns an array empty (if the item wasn't found)
-# or with one element (if the item was found)
-  
-# How to get object from map by key
-mp2.found "name" > res
-if. > name
-  res.is-empty
-  "unnamed"
-  res.get 0
-```
-
-How to remove object from map
-```
-mp2.without 55 > mp3
-mp2.find 55 > res1 // here is a one-item array
-mp3.find 55 > res2 // it's empty here
-```
-
 This is how to create json object
 ```
 +alias org.eolang.fs.json
-+alias org.eolang.collections.map
 
-# The first way is to wrap the map (here 'mp' has the type map)
-json mp > x
+# The first way is to call the json method 'of-...'
+# It creates empty object/array or wrapped int/string
+json.of-object > x1
+json.of-array > x2
+json.of-int 42 > x3
+json.of-string "some string" > x4
 
-# The second way is to parse the text
-x.parse "there should be a json string" > x2
+# The second way is to parse the json text
+json.parse "{age: 21, name: \"John\"}" > x5
 ```
 
 JSON string for the following examples (the name of the string is **data**)
 ```
 {
   "id": 1,
+  "essence": "shelf",
   "books": [
     {
       "title": "Winnie the Pooh",
@@ -99,24 +59,48 @@ stdout > @
     (((books.at 0).found "title").at 0).as-string 
 ```
 
-The creation and use of a new json object
+The creation a new json object
 ```
 # creating of empty json object
-jsn.parse "{}" > x
+json.object > x
 
+# example of creating a filled json
 with. > x2
   with.
-    x
-    "age"
-    20
-  "state"
-  "good"
+    with.
+      json.of-object
+      "name"
+      json.of-string "shelf"
+    "color"
+    json.of-string "black wood"
+  "books"
+  with.
+    with.
+      json.of-array
+      with.
+        with.
+          json.of-object
+          "name"
+          json.of-string "War and Peace"
+        "age"
+        json.of-int 1869
+    with.
+      with.
+        json.of-object
+        "name"
+        json.of-string "Harry Potter"
+      "age"
+      json.of-int 1997
 ```
 
 **x2** after the previous block of code
 ```
 {
-  "age": 20,
-  "state": "good"
+  books: [
+    {name: "War and Peace", age: 1869},
+    {name: "Harry Potter", age: 1997} 
+  ],
+  name: "shelf",
+  color: "black wood" 
 }
 ```
