@@ -1,4 +1,5 @@
 +package org.eolang.jsn
++alias org.eolang.jsn.json
 +alias org.eolang.jsn.json-array
 +alias org.eolang.jsn.json-int
 +alias org.eolang.jsn.json-string
@@ -6,8 +7,7 @@
 +alias org.eolang.collections.list
 +junit
 
-# * "[10, \"abc\", ]" "[10, ]"
-[] > json-array-as-string-test
+[] > hardcode-json-array-as-string
   json-int 10 > a!
   json-string "abc" > b!
   json-array (* a b) > ja!
@@ -17,3 +17,9 @@
     $.equal-to
       list
         * "[10, \"abc\", ]" "[]"
+
+[] > json-array-creating
+  json.of-array > ja!
+  assert-that > @
+    ja.as-string
+    $.equal-to "[]"

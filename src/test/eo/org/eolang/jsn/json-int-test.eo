@@ -2,9 +2,10 @@
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.collections.list
 +alias org.eolang.jsn.json-int
++alias org.eolang.jsn.json
 +junit
 
-[] > json-int-as-string-test
+[] > hardcode-json-int-as-string-test
   json-int 42 > a!
   json-int 43 > b!
   assert-that > @
@@ -12,3 +13,9 @@
     $.equal-to
       list
         * "42" "43"
+
+[] > json-int-creating
+  json.of-int -123 > jo!
+  assert-that > @
+    jo.as-string
+    $.equal-to "-123"

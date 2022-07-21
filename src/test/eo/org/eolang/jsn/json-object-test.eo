@@ -1,5 +1,23 @@
 +package org.eolang.jsn
++alias org.eolang.jsn.json-object
++alias org.eolang.jsn.json-int
++alias org.eolang.jsn.json
++alias org.eolang.collections.map
++alias org.eolang.hamcrest.assert-that
 +junit
 
-[] > empty-test-239465
-  TRUE > @
+[] > hardcode-json-object-as-string-test
+  json-int 2 > a!
+  json-int 3 > b!
+  ((map *).with "a" a).with "b" b > mp!
+  json-object mp > jo!
+  assert-that > @
+    0
+    $.equal-to 0
+
+[] > json-object-creating
+  json.of-object > jo!
+  assert-that > @
+    jo.as-string
+    $.equal-to "{}"
+

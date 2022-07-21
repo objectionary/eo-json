@@ -2,6 +2,7 @@
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.collections.list
 +alias org.eolang.jsn.json-string
++alias org.eolang.jsn.json
 +junit
 
 [] > json-string-as-string-test
@@ -12,3 +13,9 @@
     $.equal-to
       list
         * "\"\"" "\"abc\""
+
+[] > json-string-creating
+  json.of-string "some string" > jo!
+  assert-that > @
+    jo.as-string
+    $.equal-to "\"some string\""

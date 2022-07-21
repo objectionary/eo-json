@@ -1,11 +1,19 @@
 +package org.eolang.jsn
++alias org.eolang.collections.multimap
++alias org.eolang.collections.list
++alias org.eolang.jsn.json
 +rt jvm org.eolang:eo-json:0.0.0
 
 [value] > json-object
 
   value > @
 
-  # +alias org.eolang.collections.multimap
-  # (multimap *).concat-all-arrays ((data.at 0).m) > caa!
   [] > as-string
-    TRUE > @
+    (multimap *).concat-all-arrays (value.m) > caa!
+    reduce. > res!
+      list
+        caa
+      ""
+      [a x]
+        json.join-all a (x.at 0) ": " ((x.at 1).as-string) ", " > @
+    json.join-all "{" res "}" > @
