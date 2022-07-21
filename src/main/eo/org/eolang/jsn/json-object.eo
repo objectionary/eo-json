@@ -20,3 +20,6 @@
 
   [k v] > with
     json-object (value.with k v) > @
+
+  [k] > found
+    value.found k > @
