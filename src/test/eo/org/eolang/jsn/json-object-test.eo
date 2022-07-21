@@ -6,14 +6,14 @@
 +alias org.eolang.hamcrest.assert-that
 +junit
 
-[] > hardcode-json-object-as-string-test
+[] > hardcode-json-object-as-string
   json-int 2 > a!
   json-int 3 > b!
   ((map *).with "a" a).with "b" b > mp!
   json-object mp > jo!
   assert-that > @
-    0
-    $.equal-to 0
+    jo.as-string
+    $.equal-to "{a: 2, b: 3, }"
 
 [] > json-object-creating
   json.of-object > jo!
@@ -21,3 +21,14 @@
     jo.as-string
     $.equal-to "{}"
 
+[] > json-object-with
+  with. > jo!
+    with.
+      json.of-object
+      "age"
+      json.of-int 21
+    "name"
+    json.of-string "John"
+  assert-that > @
+    jo.as-string
+    $.equal-to "{age: 21, name: \"John\", }"

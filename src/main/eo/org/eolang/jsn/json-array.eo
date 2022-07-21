@@ -15,3 +15,9 @@
       [a x]
         json.join-all a (x.as-string) ", " > @
     json.join-all "[" res "]" > @
+
+  [index] > at
+    value.at index > @
+
+  [v] > with
+    json-array (value.with v) > @

@@ -23,3 +23,13 @@
   assert-that > @
     ja.as-string
     $.equal-to "[]"
+
+[] > json-array-with
+  with. > ja!
+    with.
+      json.of-array
+      json.of-int 12
+    json.of-int 13
+  assert-that > @
+    ja.as-string
+    $.equal-to "[12, 13, ]"

@@ -5,7 +5,7 @@
 +alias org.eolang.jsn.json
 +junit
 
-[] > json-string-as-string-test
+[] > hardcode-json-string-as-string
   json-string "" > a!
   json-string "abc" > b!
   assert-that > @

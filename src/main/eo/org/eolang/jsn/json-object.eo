@@ -17,3 +17,6 @@
       [a x]
         json.join-all a (x.at 0) ": " ((x.at 1).as-string) ", " > @
     json.join-all "{" res "}" > @
+
+  [k v] > with
+    json-object (value.with k v) > @
