@@ -13,3 +13,34 @@
     $.equal-to
       list
         * "abcde" "" "abc" "de"
+
+[] > json-as-string-large-test
+  with. > jo!
+    with.
+      with.
+        json.of-object
+        "name"
+        json.of-string "shelf"
+      "clr"
+      json.of-string "black wood"
+    "books"
+    with.
+      with.
+        json.of-array
+        with.
+          with.
+            json.of-object
+            "name"
+            json.of-string "War and Peace"
+          "age"
+          json.of-int 1869
+      with.
+        with.
+          json.of-object
+          "name"
+          json.of-string "Harry Potter"
+        "age"
+        json.of-int 1997
+  assert-that > @
+    (jo.as-string)
+    $.equal-to "{books: [{name: \"War and Peace\", age: 1869, }, {name: \"Harry Potter\", age: 1997, }, ], name: \"shelf\", clr: \"black wood\", }"
