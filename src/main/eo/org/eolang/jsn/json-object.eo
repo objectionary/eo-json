@@ -1,7 +1,7 @@
 +package org.eolang.jsn
 +alias org.eolang.collections.multimap
 +alias org.eolang.collections.list
-+alias org.eolang.jsn.json
++alias org.eolang.txt.text
 +rt jvm org.eolang:eo-json:0.0.0
 
 [value] > json-object
@@ -15,8 +15,12 @@
         caa
       ""
       [a x]
-        json.join-all a (x.at 0) ": " ((x.at 1).as-string) ", " > @
-    json.join-all "{" res "}" > @
+        joined. > @
+          text ""
+          * a (x.at 0) ": " ((x.at 1).as-string) ", "
+    joined. > @
+      text ""
+      * "{" res "}"
 
   [k v] > with
     json-object (value.with k v) > @

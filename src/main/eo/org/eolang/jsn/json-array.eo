@@ -1,6 +1,6 @@
 +package org.eolang.jsn
 +alias org.eolang.collections.list
-+alias org.eolang.jsn.json
++alias org.eolang.txt.text
 +rt jvm org.eolang:eo-json:0.0.0
 
 [value] > json-array
@@ -13,8 +13,12 @@
         value
       ""
       [a x]
-        json.join-all a (x.as-string) ", " > @
-    json.join-all "[" res "]" > @
+        joined. > @
+          text ""
+          * a (x.as-string) ", "
+    joined. > @
+      text ""
+      * "[" res "]"
 
   [index] > at
     value.at index > @
