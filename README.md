@@ -1,3 +1,19 @@
+<img src="https://www.yegor256.com/images/books/elegant-objects/cactus.svg" height="100px" />
+
+[![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
+[![DevOps By Rultor.com](http://www.rultor.com/b/objectionary/eo-hamcrest)](http://www.rultor.com/p/objectionary/eo-hamcrest)
+[![We recommend IntelliJ IDEA](https://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
+
+[![Maven Central](https://img.shields.io/maven-central/v/org.eolang/eo-hamcrest.svg)](https://maven-badges.herokuapp.com/maven-central/org.eolang/eo-hamcrest)
+[![mvn](https://github.com/objectionary/eo-hamcrest/actions/workflows/mvn.yml/badge.svg)](https://github.com/objectionary/eo-hamcrest/actions/workflows/mvn.yml)
+[![codecov](https://codecov.io/gh/cqfn/eo/branch/master/graph/badge.svg)](https://codecov.io/gh/cqfn/eo)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/Graur/eo-tests/blob/master/LICENSE.txt)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/b8b59692f3c8c973ac54/maintainability)](https://codeclimate.com/github/objectionary/eo-hamcrest/maintainability)
+[![Hits-of-Code](https://hitsofcode.com/github/graur/eo-hamcrest)](https://hitsofcode.com/github/graur/eo-hamcrest/view)
+![Code-Size](https://img.shields.io/github/languages/code-size/objectionary/eo-hamcrest)
+![Lines of code](https://img.shields.io/tokei/lines/github/objectionary/eo-hamcrest)
+
 [EOLANG](https://www.eolang.org) objects for JSON parsing.
 
 The main idea is that everything is a json
@@ -104,3 +120,14 @@ with. > x2
   color: "black wood" 
 }
 ```
+
+## How to Contribute
+Fork this repository, make changes, send us a [pull request](https://www.yegor256.com/2014/04/15/github-guidelines.html).
+We will review your changes and apply them to the `master` branch shortly,
+provided they don't violate our quality standards. To avoid frustration,
+before sending us your pull request please run full Maven build:
+```bash
+$ mvn clean install -Pqulice
+```
+
+You will need Maven 3.3+ and Java 8+.
