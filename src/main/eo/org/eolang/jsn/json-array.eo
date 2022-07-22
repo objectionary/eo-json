@@ -24,7 +24,6 @@
 +alias org.eolang.collections.list
 +alias org.eolang.txt.text
 +home https://github.com/objectionary/eo-json
-+rt jvm org.eolang:eo-json:0.0.0
 
 [value] > json-array
 

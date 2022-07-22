@@ -24,7 +24,6 @@
 +alias org.eolang.math.number
 +version 0.0.0
 +home https://github.com/objectionary/eo-json
-+rt jvm org.eolang:eo-json:0.0.0
 
 [value] > json-int
 
