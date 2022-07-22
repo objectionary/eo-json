@@ -1,0 +1,9 @@
+errors:
+  - graur.andrew@gmail.com
+alerts:
+  github:
+    - Graur
+
+tags:
+  - pdd
+  - bug
