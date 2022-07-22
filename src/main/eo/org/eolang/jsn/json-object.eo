@@ -32,10 +32,10 @@
   value > @
 
   [] > as-string
-    (multimap *).concat-all-arrays (value.m) > caa!
-    reduce. > res!
+    (multimap *).concat-all-arrays (value.m) > all-pairs!
+    reduce. > object-str-res!
       list
-        caa
+        all-pairs
       ""
       [a x]
         joined. > @
@@ -43,7 +43,7 @@
           * a (x.at 0) ": " ((x.at 1).as-string) ", "
     joined. > @
       text ""
-      * "{" res "}"
+      * "{" object-str-res "}"
 
   [k v] > with
     json-object (value.with k v) > @
