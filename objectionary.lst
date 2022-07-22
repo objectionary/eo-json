@@ -1,0 +1,10 @@
+objectionary/objects/org/eolang/jsn/json-object.eo
+objectionary/objects/org/eolang/jsn/json-string.eo
+objectionary/objects/org/eolang/jsn/json.eo
+objectionary/objects/org/eolang/jsn/json-int.eo
+objectionary/objects/org/eolang/jsn/json-array.eo
+objectionary/tests/org/eolang/jsn/json-int-test.eo
+objectionary/tests/org/eolang/jsn/json-test.eo
+objectionary/tests/org/eolang/jsn/json-array-test.eo
+objectionary/tests/org/eolang/jsn/json-object-test.eo
+objectionary/tests/org/eolang/jsn/json-string-test.eo
