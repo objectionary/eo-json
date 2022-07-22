@@ -42,8 +42,5 @@
       text ""
       * "[" res "]"
 
-  [index] > at
-    value.at index > @
-
   [v] > with
     json-array (value.with v) > @
