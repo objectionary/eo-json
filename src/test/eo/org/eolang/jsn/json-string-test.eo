@@ -20,14 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-+package org.eolang.jsn
-+alias org.eolang.hamcrest.assert-that
 +alias org.eolang.collections.list
-+alias org.eolang.jsn.json-string
++alias org.eolang.hamcrest.assert-that
 +alias org.eolang.jsn.json
-+version 0.0.0
++alias org.eolang.jsn.json-string
 +home https://github.com/objectionary/eo-json
 +junit
++package org.eolang.jsn
++version 0.0.0
 
 [] > hardcode-json-string-as-string
   json-string "" > a!

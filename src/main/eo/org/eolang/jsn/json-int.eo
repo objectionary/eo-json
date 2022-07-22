@@ -20,10 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-+package org.eolang.jsn
 +alias org.eolang.math.number
-+version 0.0.0
 +home https://github.com/objectionary/eo-json
++package org.eolang.jsn
++version 0.0.0
 
 [value] > json-int
 

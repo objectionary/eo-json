@@ -20,12 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-+package org.eolang.jsn
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.jsn.json
-+version 0.0.0
 +home https://github.com/objectionary/eo-json
 +junit
++package org.eolang.jsn
++version 0.0.0
 
 [] > json-as-string-large-test
   with. > jo!
