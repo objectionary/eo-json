@@ -27,6 +27,8 @@
 +alias org.eolang.jsn.json-string
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.collections.list
++version 0.0.0
++home https://github.com/objectionary/eo-json
 +junit
 
 [] > hardcode-json-array-as-string

@@ -22,6 +22,8 @@
 
 +package org.eolang.jsn
 +alias org.eolang.txt.text
++version 0.0.0
++home https://github.com/objectionary/eo-json
 +rt jvm org.eolang:eo-json:0.0.0
 
 [value] > json-string

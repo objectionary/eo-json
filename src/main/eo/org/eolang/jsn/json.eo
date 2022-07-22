@@ -20,12 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-+package org.eolang.jsn
-+alias org.eolang.jsn.json-int
 +alias org.eolang.jsn.json-array
-+alias org.eolang.jsn.json-string
++alias org.eolang.jsn.json-int
 +alias org.eolang.jsn.json-object
++alias org.eolang.jsn.json-string
++package org.eolang.jsn
 +alias org.eolang.collections.map
++version 0.0.0
++home https://github.com/objectionary/eo-json
 +rt jvm org.eolang:eo-json:0.0.0
 
 [] > json

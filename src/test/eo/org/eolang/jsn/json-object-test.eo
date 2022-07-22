@@ -27,6 +27,8 @@
 +alias org.eolang.collections.map
 +alias org.eolang.collections.list
 +alias org.eolang.hamcrest.assert-that
++version 0.0.0
++home https://github.com/objectionary/eo-json
 +junit
 
 [] > hardcode-json-object-as-string

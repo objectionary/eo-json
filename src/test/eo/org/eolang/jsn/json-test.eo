@@ -23,6 +23,8 @@
 +package org.eolang.jsn
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.jsn.json
++version 0.0.0
++home https://github.com/objectionary/eo-json
 +junit
 
 [] > json-as-string-large-test

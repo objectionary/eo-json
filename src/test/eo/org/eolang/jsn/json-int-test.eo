@@ -25,6 +25,8 @@
 +alias org.eolang.collections.list
 +alias org.eolang.jsn.json-int
 +alias org.eolang.jsn.json
++version 0.0.0
++home https://github.com/objectionary/eo-json
 +junit
 
 [] > hardcode-json-int-as-string
