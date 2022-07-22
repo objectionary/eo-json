@@ -30,5 +30,5 @@
   value > @
 
   [] > as-string
-    ((number value).as-string) > num!
-    num > @
+    ((number value).as-string) > str-number!
+    str-number > @
