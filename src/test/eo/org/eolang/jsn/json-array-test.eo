@@ -35,7 +35,7 @@
   json-int 10 > a!
   json-string "abc" > b!
   json-array (* a b) > ja!
-  json-array (*) > ja2!
+  json-array * > ja2!
   assert-that > @
     * (ja.as-string) (ja2.as-string)
     $.equal-to

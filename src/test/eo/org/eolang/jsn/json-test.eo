@@ -55,5 +55,6 @@
         "age"
         json.of-int 1997
   assert-that > @
-    (jo.as-string)
+    as-string.
+      jo
     $.equal-to "{books: [{name: \"War and Peace\", age: 1869, }, {name: \"Harry Potter\", age: 1997, }, ], name: \"shelf\", clr: \"black wood\", }"

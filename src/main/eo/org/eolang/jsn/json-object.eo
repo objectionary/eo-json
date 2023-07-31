@@ -28,7 +28,6 @@
 +version 0.0.0
 
 [value] > json-object
-
   value > @
 
   [] > as-string
