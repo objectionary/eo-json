@@ -32,7 +32,7 @@
 
   [] > as-string
     (multimap *).concat-all-arrays (value.m) > all-pairs!
-    reduce. > object-str-res!
+    reduced. > object-str-res!
       list
         all-pairs
       ""

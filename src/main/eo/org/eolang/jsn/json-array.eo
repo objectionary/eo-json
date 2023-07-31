@@ -29,7 +29,7 @@
   value > @
 
   [] > as-string
-    reduce. > array-str-res!
+    reduced. > array-str-res!
       list
         ^.value
       ""

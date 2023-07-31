@@ -57,4 +57,4 @@
   assert-that > @
     as-string.
       jo
-    $.equal-to "{books: [{name: \"War and Peace\", age: 1869, }, {name: \"Harry Potter\", age: 1997, }, ], name: \"shelf\", clr: \"black wood\", }"
+    $.equal-to "{name: \"shelf\", clr: \"black wood\", books: [{name: \"War and Peace\", age: 1869, }, {name: \"Harry Potter\", age: 1997, }, ], }"
