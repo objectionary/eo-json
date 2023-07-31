@@ -35,8 +35,7 @@
       map *
 
   [] > of-array
-    json-array > @
-      *
+    json-array * > @
 
   [value] > of-string
     json-string value > @

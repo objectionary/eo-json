@@ -29,6 +29,5 @@
   value > @
 
   [] > as-string
-    as-string > str-number!
+    as-string. > @
       number value
-    str-number > @

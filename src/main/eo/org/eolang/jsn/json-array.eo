@@ -31,7 +31,7 @@
   [] > as-string
     reduce. > array-str-res!
       list
-        value
+        ^.value
       ""
       [a x]
         joined. > @
@@ -42,7 +42,7 @@
       * "[" array-str-res "]"
 
   [index] > at
-    value.at index > @
+    ^.value.at index > @
 
   [v] > with
-    json-array (value.with v) > @
+    json-array (^.value.with v) > @
