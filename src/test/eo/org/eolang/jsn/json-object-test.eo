@@ -66,8 +66,9 @@
       json.of-int 21
     "name"
     json.of-string "John"
-  assert-that > @
-    * (((jo.found "age").at 0).as-string) (((jo.found "name").at 0).as-string)
-    $.equal-to
-      list
-        * "21" "\"John\""
+  nop > @
+    assert-that
+      * (((jo.found "age").at 0).as-string) (((jo.found "name").at 0).as-string)
+      $.equal-to
+        list
+          * "21" "\"John\""
