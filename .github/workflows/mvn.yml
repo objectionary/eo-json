@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        java: [11, 13]
+        java: [11, 20]
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: g4s8/xcop-action@master
+      - uses: g4s8/xcop-action@v1.3
   pdd-lint:
     runs-on: ubuntu-latest
     steps:
