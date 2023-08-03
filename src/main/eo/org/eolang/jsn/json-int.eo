@@ -26,9 +26,8 @@
 +version 0.0.0
 
 [value] > json-int
-
   value > @
 
   [] > as-string
-    ((number value).as-string) > str-number!
-    str-number > @
+    as-string. > @
+      number value

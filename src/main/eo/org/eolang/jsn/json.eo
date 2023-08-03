@@ -30,12 +30,12 @@
 +version 0.0.0
 
 [] > json
-
   [] > of-object
-    json-object (map *) > @
+    json-object > @
+      map *
 
   [] > of-array
-    json-array (*) > @
+    json-array * > @
 
   [value] > of-string
     json-string value > @

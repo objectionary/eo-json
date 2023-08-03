@@ -28,12 +28,11 @@
 +version 0.0.0
 
 [value] > json-object
-
   value > @
 
   [] > as-string
     (multimap *).concat-all-arrays (value.m) > all-pairs!
-    reduce. > object-str-res!
+    reduced. > object-str-res!
       list
         all-pairs
       ""
@@ -46,7 +45,8 @@
       * "{" object-str-res "}"
 
   [k v] > with
-    json-object (value.with k v) > @
+    json-object > @
+      value.with k v
 
   [k] > found
     value.found k > @
