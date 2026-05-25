@@ -28,9 +28,11 @@ json.of-object > x1
 json.of-array > x2
 json.of-int 42 > x3
 json.of-string "some string" > x4
+json.of-bool true > x5
+json.of-null > x6
 
 # The second way is to parse the json text
-json.parse "{age: 21, name: \"John\"}" > x5
+json.parse "{age: 21, name: \"John\"}" > x7
 ```
 
 JSON string for the following examples (the name of the string is **data**)

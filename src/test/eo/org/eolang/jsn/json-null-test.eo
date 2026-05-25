@@ -20,33 +20,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-+alias org.eolang.collections.map
-+alias org.eolang.jsn.json-array
-+alias org.eolang.jsn.json-bool
-+alias org.eolang.jsn.json-int
++alias org.eolang.hamcrest.assert-that
++alias org.eolang.jsn.json
 +alias org.eolang.jsn.json-null
-+alias org.eolang.jsn.json-object
-+alias org.eolang.jsn.json-string
 +home https://github.com/objectionary/eo-json
++junit
 +package org.eolang.jsn
 +version 0.0.0
 
-[] > json
-  [] > of-object
-    json-object > @
-      map *
+[] > hardcode-json-null-as-string
+  json-null > jn!
+  assert-that > @
+    jn.as-string
+    $.equal-to "null"
 
-  [] > of-array
-    json-array * > @
-
-  [value] > of-string
-    json-string value > @
-
-  [value] > of-int
-    json-int value > @
-
-  [value] > of-bool
-    json-bool value > @
-
-  [] > of-null
-    json-null > @
+[] > json-null-creating
+  json.of-null > jo!
+  assert-that > @
+    jo.as-string
+    $.equal-to "null"
