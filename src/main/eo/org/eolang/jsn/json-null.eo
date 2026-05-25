@@ -25,9 +25,5 @@
 +version 0.0.0
 
 [] > json-null
-
   [] > as-string
-    if. > @
-      true
-      "null"
-      "null"
+    "null" > @
