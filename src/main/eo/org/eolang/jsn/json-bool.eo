@@ -30,5 +30,5 @@
   [] > as-string
     if. > @
       value
-      "true"
-      "false"
+      74-72-75-65
+      66-61-6C-73-65

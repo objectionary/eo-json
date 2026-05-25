@@ -32,10 +32,10 @@
   json-null > jn!
   assert-that > @
     jn.as-string
-    $.equal-to "null"
+    $.equal-to 6E-75-6C-6C
 
 [] > json-null-creating
   json.of-null > jo!
   assert-that > @
     jo.as-string
-    $.equal-to "null"
+    $.equal-to 6E-75-6C-6C
