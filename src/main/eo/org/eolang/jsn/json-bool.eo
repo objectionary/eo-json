@@ -30,5 +30,5 @@
   [] > as-string
     if. > @
       value
-      string "true"
-      string "false"
+      "true"
+      "false"

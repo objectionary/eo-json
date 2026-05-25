@@ -27,4 +27,7 @@
 [] > json-null
 
   [] > as-string
-    string "null" > @
+    if. > @
+      true
+      "null"
+      "null"
