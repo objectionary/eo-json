@@ -30,4 +30,4 @@
   [] > as-string
     joined. > @
       text ""
-      * "n" "u" "l" "l"
+      * "null"

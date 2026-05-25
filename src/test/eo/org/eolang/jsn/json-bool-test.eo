@@ -33,12 +33,12 @@
 [] > json-true-text
   joined. > @
     text ""
-    * "t" "r" "u" "e"
+    * "true"
 
 [] > json-false-text
   joined. > @
     text ""
-    * "f" "a" "l" "s" "e"
+    * "false"
 
 [] > hardcode-json-bool-as-string
   json-bool true > a!

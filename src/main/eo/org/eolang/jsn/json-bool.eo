@@ -31,12 +31,12 @@
   [] > true-string
     joined. > @
       text ""
-      * "t" "r" "u" "e"
+      * "true"
 
   [] > false-string
     joined. > @
       text ""
-      * "f" "a" "l" "s" "e"
+      * "false"
 
   [] > as-string
     if. > @

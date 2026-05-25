@@ -32,7 +32,7 @@
 [] > json-null-text
   joined. > @
     text ""
-    * "n" "u" "l" "l"
+    * "null"
 
 [] > hardcode-json-null-as-string
   json-null > jn!
