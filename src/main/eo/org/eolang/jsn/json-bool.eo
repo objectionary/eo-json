@@ -20,7 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-+alias org.eolang.txt.text
 +home https://github.com/objectionary/eo-json
 +package org.eolang.jsn
 +version 0.0.0
@@ -28,18 +27,8 @@
 [value] > json-bool
   value > @
 
-  [] > true-string
-    joined. > @
-      text ""
-      * "true"
-
-  [] > false-string
-    joined. > @
-      text ""
-      * "false"
-
   [] > as-string
     if. > @
       value
-      true-string
-      false-string
+      string "true"
+      string "false"

@@ -24,21 +24,10 @@
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.jsn.json
 +alias org.eolang.jsn.json-bool
-+alias org.eolang.txt.text
 +home https://github.com/objectionary/eo-json
 +junit
 +package org.eolang.jsn
 +version 0.0.0
-
-[] > json-true-text
-  joined. > @
-    text ""
-    * "true"
-
-[] > json-false-text
-  joined. > @
-    text ""
-    * "false"
 
 [] > hardcode-json-bool-as-string
   json-bool true > a!
@@ -47,11 +36,10 @@
     * (a.as-string) (b.as-string)
     $.equal-to
       list
-        * json-true-text json-false-text
+        * "true" "false"
 
 [] > json-bool-creating
   json.of-bool true > jo!
   assert-that > @
     jo.as-string
-    $.equal-to
-      json-true-text
+    $.equal-to "true"
