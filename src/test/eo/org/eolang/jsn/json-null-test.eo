@@ -23,21 +23,27 @@
 +alias org.eolang.hamcrest.assert-that
 +alias org.eolang.jsn.json
 +alias org.eolang.jsn.json-null
++alias org.eolang.txt.text
 +home https://github.com/objectionary/eo-json
 +junit
 +package org.eolang.jsn
 +version 0.0.0
+
+[] > json-null-text
+  joined. > @
+    text ""
+    * "n" "u" "l" "l"
 
 [] > hardcode-json-null-as-string
   json-null > jn!
   assert-that > @
     jn.as-string
     $.equal-to
-      string 6E-75-6C-6C
+      json-null-text
 
 [] > json-null-creating
   json.of-null > jo!
   assert-that > @
     jo.as-string
     $.equal-to
-      string 6E-75-6C-6C
+      json-null-text

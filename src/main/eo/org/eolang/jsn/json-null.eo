@@ -20,6 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
++alias org.eolang.txt.text
 +home https://github.com/objectionary/eo-json
 +package org.eolang.jsn
 +version 0.0.0
@@ -27,4 +28,6 @@
 [] > json-null
 
   [] > as-string
-    string 6E-75-6C-6C > @
+    joined. > @
+      text ""
+      * "n" "u" "l" "l"
