@@ -36,10 +36,11 @@
     * (a.as-string) (b.as-string)
     $.equal-to
       list
-        * 74-72-75-65 66-61-6C-73-65
+        * (string 74-72-75-65) (string 66-61-6C-73-65)
 
 [] > json-bool-creating
   json.of-bool true > jo!
   assert-that > @
     jo.as-string
-    $.equal-to 74-72-75-65
+    $.equal-to
+      string 74-72-75-65

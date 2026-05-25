@@ -27,4 +27,4 @@
 [] > json-null
 
   [] > as-string
-    6E-75-6C-6C > @
+    string 6E-75-6C-6C > @
