@@ -43,3 +43,21 @@
   assert-that > @
     jo.as-string
     $.equal-to "\"some string\""
+
+[] > escapes-quotes-and-backslashes
+  json-string "a\"b\\c" > str!
+  assert-that > @
+    str.as-string
+    $.equal-to "\"a\\\"b\\\\c\""
+
+[] > escapes-named-control-characters
+  json-string "\b\t\n\f\r" > str!
+  assert-that > @
+    str.as-string
+    $.equal-to "\"\\b\\t\\n\\f\\r\""
+
+[] > escapes-other-control-characters
+  json-string "\000\007\013\037" > str!
+  assert-that > @
+    str.as-string
+    $.equal-to "\"\\u0000\\u0007\\u000b\\u001f\""
