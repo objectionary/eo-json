@@ -31,4 +31,144 @@
   [] > as-string
     joined. > @
       text ""
-      * "\"" value "\""
+      * "\"" escaped "\""
+
+  [] > escaped
+    escape > @
+      0
+      ""
+
+  [index acc] > escape
+    if. > @
+      index.eq value.length
+      acc
+      escape
+        index.plus 1
+        joined.
+          text ""
+          *
+            acc
+            escaped-char
+              value.slice index 1
+
+  [char] > escaped-char
+    selected > @
+      char
+      *
+        char.eq "\""
+        "\\\""
+      *
+        char.eq "\\"
+        "\\\\"
+      *
+        char.eq "\000"
+        "\\u0000"
+      *
+        char.eq "\001"
+        "\\u0001"
+      *
+        char.eq "\002"
+        "\\u0002"
+      *
+        char.eq "\003"
+        "\\u0003"
+      *
+        char.eq "\004"
+        "\\u0004"
+      *
+        char.eq "\005"
+        "\\u0005"
+      *
+        char.eq "\006"
+        "\\u0006"
+      *
+        char.eq "\007"
+        "\\u0007"
+      *
+        char.eq "\b"
+        "\\b"
+      *
+        char.eq "\t"
+        "\\t"
+      *
+        char.eq "\n"
+        "\\n"
+      *
+        char.eq "\013"
+        "\\u000b"
+      *
+        char.eq "\f"
+        "\\f"
+      *
+        char.eq "\r"
+        "\\r"
+      *
+        char.eq "\016"
+        "\\u000e"
+      *
+        char.eq "\017"
+        "\\u000f"
+      *
+        char.eq "\020"
+        "\\u0010"
+      *
+        char.eq "\021"
+        "\\u0011"
+      *
+        char.eq "\022"
+        "\\u0012"
+      *
+        char.eq "\023"
+        "\\u0013"
+      *
+        char.eq "\024"
+        "\\u0014"
+      *
+        char.eq "\025"
+        "\\u0015"
+      *
+        char.eq "\026"
+        "\\u0016"
+      *
+        char.eq "\027"
+        "\\u0017"
+      *
+        char.eq "\030"
+        "\\u0018"
+      *
+        char.eq "\031"
+        "\\u0019"
+      *
+        char.eq "\032"
+        "\\u001a"
+      *
+        char.eq "\033"
+        "\\u001b"
+      *
+        char.eq "\034"
+        "\\u001c"
+      *
+        char.eq "\035"
+        "\\u001d"
+      *
+        char.eq "\036"
+        "\\u001e"
+      *
+        char.eq "\037"
+        "\\u001f"
+
+  [fallback cases...] > selected
+    check > @
+      0
+      cases
+
+    [index all] > check
+      if. > @
+        index.eq all.length
+        fallback
+        if.
+          (all.at index).at 0
+          (all.at index).at 1
+          check
+            index.plus 1
+            all
